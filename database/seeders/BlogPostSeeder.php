@@ -1,0 +1,351 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\BlogPost;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
+
+class BlogPostSeeder extends Seeder
+{
+    public function run(): void
+    {
+        BlogPost::query()->delete();
+
+        $img = [
+            'event1' => '/images/home/section7/event-1.png',
+            'event2' => '/images/home/section7/event-2.png',
+            'event3' => '/images/home/section7/event-3.png',
+            'card1' => '/images/home/section4/images/card-1.png',
+            'card2' => '/images/home/section4/images/card-2.png',
+            'card3' => '/images/home/section4/images/card-3.png',
+            'card4' => '/images/home/section4/images/card-4.png',
+            'card5' => '/images/home/section4/images/card-5.png',
+            'card6' => '/images/home/section4/images/card-6.png',
+            'cic' => '/images/home/section6/distrito-cic.png',
+            'siglo' => '/images/home/section6/distrito-siglo.png',
+        ];
+
+        $posts = [
+            [
+                'title_es' => 'El efecto Yucatán: razones por las que los mejores congresos eligen este destino',
+                'title_en' => 'The Yucatán effect: why the best congresses choose this destination',
+                'slug' => 'efecto-yucatan',
+                'published_at' => '2026-03-12',
+                'image' => 'images/home/section4/images/card-1.png',
+                'category' => 'Destinos',
+                'excerpt_es' => 'Un conjunto de razones estratégicas y emocionales que llevan a los comités organizadores a elegir Yucatán.',
+                'excerpt_en' => 'A set of strategic and emotional reasons that lead organizing committees to choose Yucatán.',
+                'mid_image' => $img['card3'],
+                'mid_alt_es' => 'Flamencos en Yucatán',
+                'mid_alt_en' => 'Flamingos in Yucatán',
+                'es' => [
+                    'intro' => 'En los últimos años, el nombre de Yucatán y de su capital Mérida aparece cada vez con mayor frecuencia en el calendario de congresos, convenciones y reuniones de alto nivel. No se trata de una coincidencia ni de una tendencia pasajera, sino del resultado de un trabajo constante entre autoridades, iniciativa privada y profesionales del sector para posicionar al destino a la altura de lo que la industria exige. A este fenómeno lo llamamos el efecto Yucatán: un conjunto de razones que llevan a los comités organizadores a considerar al estado dentro de sus decisiones estratégicas, y que provocan que muchos asistentes se retiren del evento preguntándose cuándo podrán volver.',
+                    'h3' => 'Razones estratégicas: infraestructura, seguridad y valor desde Mérida, su capital.',
+                    'p1' => 'Centros de convenciones de primer nivel, hoteles preparados para grupos numerosos, venues alternativos y una red de proveedores especializados conforman una estructura sólida sobre la cual se construyen eventos complejos. Mérida, la capital yucateca está acostumbrada a recibir encuentros de alto perfil, y eso se refleja en la eficiencia con la que cada área responde.',
+                    'p2' => 'A ello se suma un atributo clave: Yucatán es reconocido de forma constante por sus altos niveles de seguridad y calidad de vida. Esta condición permite que los visitantes transiten con tranquilidad por Paseo de Montejo, la Calle 60, el Corredor Gastronómico de la calle 47 y, en general, por la ciudad, incluso en horarios nocturnos, encontrando a su paso restaurantes y establecimientos que los reciben con calidez.',
+                    'h2' => 'Razones emocionales: identidad, hospitalidad y memoria',
+                    'p3' => 'Más allá de la infraestructura, Yucatán ofrece una identidad cultural viva que transforma cada reunión en una experiencia. La hospitalidad maya-yucateca, la gastronomía reconocida a nivel internacional y un centro histórico caminable crean un entorno donde los asistentes no solo participan en el programa oficial: también descubren el destino.',
+                    'p4' => 'Esa combinación de profesionalismo operativo y calidez humana es difícil de replicar. Por eso, cuando un comité evalúa sedes, Yucatán suele destacar no solo por lo que puede alojar, sino por lo que logra dejar en la memoria de quienes vienen.',
+                    'p5' => 'Planear un congreso aquí significa conectar con un ecosistema preparado: distritos de reuniones, aliados locales y un equipo especializado en acompañar cada etapa del proyecto. El efecto Yucatán no es una promesa de marketing; es el resultado de años de trabajo colectivo.',
+                    'p6' => 'Si buscas un destino donde la logística funcione y la experiencia se sienta auténtica, Yucatán ya está listo para tu próximo encuentro.',
+                ],
+                'en' => [
+                    'intro' => 'In recent years, the name of Yucatán and its capital, Mérida, has appeared more and more often on the calendar of high-level congresses, conventions, and meetings. This is not a coincidence or a passing trend, but the result of continuous work among authorities, the private sector, and industry professionals to position the destination at the level the industry demands. We call this phenomenon the Yucatán effect: a set of reasons that lead organizing committees to include the state in their strategic decisions, and that leave many attendees wondering when they will be able to return.',
+                    'h3' => 'Strategic reasons: infrastructure, safety, and value from Mérida, its capital.',
+                    'p1' => 'World-class convention centers, hotels prepared for large groups, alternative venues, and a network of specialized suppliers form a solid structure on which complex events are built. Mérida, Yucatán’s capital, is used to hosting high-profile gatherings, and that shows in the efficiency with which every area responds.',
+                    'p2' => 'Added to this is a key attribute: Yucatán is consistently recognized for its high levels of safety and quality of life. This allows visitors to move comfortably along Paseo de Montejo, Calle 60, the Calle 47 Gastronomic Corridor, and throughout the city—even at night—finding restaurants and businesses that welcome them warmly.',
+                    'h2' => 'Emotional reasons: identity, hospitality, and memory',
+                    'p3' => 'Beyond infrastructure, Yucatán offers a living cultural identity that turns every meeting into an experience. Maya-Yucatecan hospitality, internationally recognized cuisine, and a walkable historic center create an environment where attendees not only join the official program—they also discover the destination.',
+                    'p4' => 'That combination of operational professionalism and human warmth is hard to replicate. That is why, when a committee evaluates venues, Yucatán often stands out not only for what it can host, but for what it leaves in the memory of those who come.',
+                    'p5' => 'Planning a congress here means connecting with a prepared ecosystem: meetings districts, local partners, and a team specialized in supporting every stage of the project. The Yucatán effect is not a marketing promise; it is the result of years of collective work.',
+                    'p6' => 'If you are looking for a destination where logistics work and the experience feels authentic, Yucatán is ready for your next gathering.',
+                ],
+            ],
+            [
+                'title_es' => 'Yucatán en CDMX: un destino que sabe inspirar grandes encuentros.',
+                'title_en' => 'Yucatán in Mexico City: a destination that inspires great gatherings.',
+                'slug' => 'yucatan-en-cdmx',
+                'published_at' => '2026-02-20',
+                'image' => 'images/home/section7/event-1.png',
+                'category' => 'Eventos',
+                'excerpt_es' => 'Cómo Yucatán se presenta ante organizadores en la Ciudad de México.',
+                'excerpt_en' => 'How Yucatán presents itself to organizers in Mexico City.',
+                'mid_image' => $img['event2'],
+                'mid_alt_es' => 'Encuentro de la industria de reuniones',
+                'mid_alt_en' => 'Meetings industry gathering',
+                'es' => [
+                    'intro' => 'Cada año, Ciudad de México concentra una parte importante de las decisiones que definen el calendario de congresos y convenciones del país. Estar presentes ahí no es solo una acción de promoción: es una forma de sostener conversaciones directas con asociaciones, agencias y organizadores que buscan sedes confiables, competitivas y con identidad propia. Yucatán llega a CDMX con una propuesta clara: infraestructura de primer nivel, seguridad y una experiencia de destino que transforma cada reunión.',
+                    'h3' => 'Presencia estratégica frente a quien decide.',
+                    'p1' => 'En ferias, ruedas de negocios y encuentros especializados compartimos cifras, casos de éxito y el mapa de nuestros distritos de reuniones. El objetivo es concreto: que el destino sea considerado desde las primeras etapas de evaluación de sede, cuando aún se comparan capacidades, costos y narrativa experiencial.',
+                    'p2' => 'La conversación con organizadores de la capital también permite escuchar necesidades reales: conectividad aérea, bloques hoteleros, venues flexibles y acompañamiento institucional. Esa escucha afina la oferta de Yucatán y fortalece alianzas con proveedores locales preparados para operar a escala nacional e internacional.',
+                    'h2' => 'De la conversación al seguimiento',
+                    'p3' => 'Inspirar no basta si no hay continuidad. Después de cada presencia en CDMX, el equipo de Visit Yucatán da seguimiento a leads, agenda visitas de inspección y conecta comités con aliados del destino: DMCs, venues, hotelería y servicios especializados.',
+                    'p4' => 'Ese proceso convierte un primer contacto en una ruta de trabajo. Muchos eventos que hoy se celebran en Mérida nacieron precisamente en una mesa de networking, una presentación o una visita técnica gestada desde la capital del país.',
+                    'p5' => 'Yucatán no compite solo con metros cuadrados: compite con hospitalidad, operación y una ciudad que sabe recibir. Llevar ese mensaje a CDMX es clave para que más organizadores descubran el destino antes de firmar su siguiente contrato de sede.',
+                    'p6' => 'Si tu asociación evalúa destinos desde la Ciudad de México, conversemos. Yucatán está listo para inspirar —y para operar— tu próximo gran encuentro.',
+                ],
+                'en' => [
+                    'intro' => 'Each year, Mexico City concentrates a major share of the decisions that shape the country’s congress and convention calendar. Being present there is not only promotion: it is a way to hold direct conversations with associations, agencies, and organizers looking for reliable, competitive venues with a distinctive identity. Yucatán arrives in CDMX with a clear offer: world-class infrastructure, safety, and a destination experience that transforms every meeting.',
+                    'h3' => 'Strategic presence in front of decision-makers.',
+                    'p1' => 'At trade shows, business rounds, and specialized gatherings we share figures, success stories, and the map of our meetings districts. The goal is concrete: that the destination is considered from the earliest venue-evaluation stages, when capacities, costs, and experiential narrative are still being compared.',
+                    'p2' => 'Talking with organizers in the capital also means hearing real needs: air connectivity, hotel blocks, flexible venues, and institutional support. That listening refines Yucatán’s offer and strengthens alliances with local suppliers prepared to operate at national and international scale.',
+                    'h2' => 'From conversation to follow-up',
+                    'p3' => 'Inspiration is not enough without continuity. After every presence in CDMX, the Visit Yucatán team follows up on leads, schedules site inspections, and connects committees with destination partners: DMCs, venues, hospitality, and specialized services.',
+                    'p4' => 'That process turns a first contact into a working path. Many events celebrated in Mérida today began precisely at a networking table, a presentation, or a technical visit originated from Mexico City.',
+                    'p5' => 'Yucatán does not compete on square meters alone: it competes on hospitality, operations, and a city that knows how to host. Carrying that message to CDMX is key so more organizers discover the destination before signing their next venue contract.',
+                    'p6' => 'If your association evaluates destinations from Mexico City, let’s talk. Yucatán is ready to inspire—and to operate—your next major gathering.',
+                ],
+            ],
+            [
+                'title_es' => 'Yucatán, sede de la Asamblea Anual 2026 del Consejo.',
+                'title_en' => 'Yucatán, host of the 2026 Annual Council Assembly.',
+                'slug' => 'asamblea-anual-2026',
+                'published_at' => '2026-01-15',
+                'image' => 'images/home/section7/event-2.png',
+                'category' => 'Eventos',
+                'excerpt_es' => 'El destino vuelve a demostrar su capacidad para recibir reuniones de alto nivel.',
+                'excerpt_en' => 'The destination once again proves its capacity to host high-level meetings.',
+                'mid_image' => $img['cic'],
+                'mid_alt_es' => 'Centro de convenciones en Yucatán',
+                'mid_alt_en' => 'Convention center in Yucatán',
+                'es' => [
+                    'intro' => 'Ser sede de una asamblea anual exige más que un salón disponible: requiere coordinación entre venues, hotelería, movilidad, protocolo y experiencia de destino. En 2026, Yucatán vuelve a demostrar que puede recibir reuniones de alto nivel con la precisión que los consejos y asociaciones esperan, y con la calidez que hace memorable cada jornada.',
+                    'h3' => 'Operación impecable para agendas exigentes.',
+                    'p1' => 'Una asamblea concentra sesiones plenarias, comisiones, actividades sociales y traslados en ventanas de tiempo muy ajustadas. Contar con centros de convenciones preparados, hoteles cercanos y proveedores locales experimentados permite que el programa avance sin fricciones y que los delegados se concentren en lo sustancial.',
+                    'p2' => 'El acompañamiento institucional también pesa. Desde la planeación hasta el cierre, el ecosistema de reuniones de Yucatán articula apoyos, logística y detalles de hospitalidad que elevan la percepción de profesionalismo ante comités nacionales e internacionales.',
+                    'h2' => 'Un calendario que consolida confianza',
+                    'p3' => 'Cada asamblea que se celebra con éxito refuerza la reputación del destino. No solo se evalúa la calidad de las instalaciones: se mide la capacidad de respuesta ante imprevistos, la claridad en la comunicación y la experiencia integral del asistente.',
+                    'p4' => 'Yucatán ha construido esa confianza a lo largo de años de trabajo con organizadores. La edición 2026 se suma a una trayectoria donde el destino no improvisá: prepara, anticipa y entrega.',
+                    'p5' => 'Para el Consejo y sus miembros, eso se traduce en mayor foco en la agenda institucional y menos preocupación operativa. Para Yucatán, en una nueva oportunidad de mostrar por qué es competitivo en el turismo de reuniones.',
+                    'p6' => 'Si tu organización busca una sede confiable para asambleas o consejos, este es el momento de explorar lo que Yucatán puede aportar a tu próximo ciclo de trabajo.',
+                ],
+                'en' => [
+                    'intro' => 'Hosting an annual assembly takes more than an available hall: it requires coordination among venues, hospitality, mobility, protocol, and destination experience. In 2026, Yucatán once again shows it can host high-level meetings with the precision councils and associations expect—and with the warmth that makes every day memorable.',
+                    'h3' => 'Impeccable operations for demanding agendas.',
+                    'p1' => 'An assembly concentrates plenaries, committees, social activities, and transfers in very tight time windows. Having prepared convention centers, nearby hotels, and experienced local suppliers allows the program to move without friction so delegates can focus on what matters.',
+                    'p2' => 'Institutional support also counts. From planning to closing, Yucatán’s meetings ecosystem aligns support, logistics, and hospitality details that raise the perception of professionalism before national and international committees.',
+                    'h2' => 'A calendar that builds trust',
+                    'p3' => 'Every successful assembly strengthens the destination’s reputation. Organizers evaluate not only facilities, but response capacity under unexpected conditions, clarity of communication, and the attendee’s overall experience.',
+                    'p4' => 'Yucatán has built that trust through years of work with organizers. The 2026 edition adds to a track record where the destination does not improvise: it prepares, anticipates, and delivers.',
+                    'p5' => 'For the Council and its members, that means more focus on the institutional agenda and less operational concern. For Yucatán, it is another chance to show why it is competitive in meetings tourism.',
+                    'p6' => 'If your organization seeks a reliable venue for assemblies or councils, this is the moment to explore what Yucatán can bring to your next working cycle.',
+                ],
+            ],
+            [
+                'title_es' => 'Qué hacer en Mérida durante un congreso: agenda antes, durante y después.',
+                'title_en' => 'What to do in Mérida during a congress: before, during, and after.',
+                'slug' => 'que-hacer-en-merida',
+                'published_at' => '2025-12-08',
+                'image' => 'images/home/section4/images/card-2.png',
+                'category' => 'Experiencias',
+                'excerpt_es' => 'Ideas para complementar el programa oficial con experiencias locales.',
+                'excerpt_en' => 'Ideas to complement the official program with local experiences.',
+                'mid_image' => $img['card5'],
+                'mid_alt_es' => 'Centro histórico de Mérida',
+                'mid_alt_en' => 'Historic center of Mérida',
+                'es' => [
+                    'intro' => 'Un congreso exitoso no termina cuando se apagan las luces del salón. En Mérida, la ciudad misma se convierte en extensión del programa: distancias cortas, oferta cultural densa y una gastronomía que invita a quedarse. Diseñar una agenda antes, durante y después del evento multiplica el valor percibido por delegados y acompañantes.',
+                    'h3' => 'Antes: llegar y ambientarse.',
+                    'p1' => 'Si el vuelo lo permite, un día previo ayuda a aclimatarse. Un recorrido corto por el centro histórico, un café en una casona restaurada o una visita ligera a un museo dan contexto al destino sin cansar. También es buen momento para revisar traslados hotel–sede y confirmar detalles con el anfitrión local.',
+                    'p2' => 'Para quienes viajan con acompañantes, anticipar opciones de tours medios o experiencias gastronómicas evita improvisaciones de último minuto y eleva la satisfacción general del grupo.',
+                    'h2' => 'Durante y después del programa oficial',
+                    'p3' => 'En las noches libres, el Corredor Gastronómico, Paseo de Montejo y la zona centro ofrecen cenas, música y ambiente seguro para networking informal. Una actividad social bien elegida —en hacienda, rooftop o patio colonial— puede convertirse en el momento más recordado del congreso.',
+                    'p4' => 'Al cerrar el evento, extender la estancia un día permite cerrar conversaciones de negocio con más calma o descubrir cenotes, pueblos cercanos y la costa. Esa extensión suele traducirse en mejores valoraciones del destino y en ganas reales de volver.',
+                    'p5' => 'La clave está en no saturar: menos traslados largos, más experiencias cercanas y de calidad. Mérida premia a quien planea con intención.',
+                    'p6' => 'Si organizas un congreso y quieres una propuesta de actividades alineada a tu audiencia, el equipo de Visit Yucatán puede ayudarte a armar una agenda coherente con el programa oficial.',
+                ],
+                'en' => [
+                    'intro' => 'A successful congress does not end when the hall lights go out. In Mérida, the city itself becomes an extension of the program: short distances, dense cultural offer, and cuisine that invites people to stay. Designing an agenda before, during, and after the event multiplies the value perceived by delegates and companions.',
+                    'h3' => 'Before: arrive and settle in.',
+                    'p1' => 'If the flight allows it, an extra day helps with acclimatization. A short walk through the historic center, coffee in a restored mansion, or a light museum visit gives destination context without fatigue. It is also a good moment to review hotel–venue transfers and confirm details with the local host.',
+                    'p2' => 'For those traveling with companions, anticipating half-day tours or culinary experiences avoids last-minute improvisation and raises overall group satisfaction.',
+                    'h2' => 'During and after the official program',
+                    'p3' => 'On free evenings, the Gastronomic Corridor, Paseo de Montejo, and downtown offer dinners, music, and a safe setting for informal networking. A well-chosen social activity—at a hacienda, rooftop, or colonial courtyard—can become the most remembered moment of the congress.',
+                    'p4' => 'After the event closes, extending the stay by a day allows business conversations to finish more calmly or opens time for cenotes, nearby towns, and the coast. That extension often translates into better destination ratings and a real desire to return.',
+                    'p5' => 'The key is not to overcrowd the schedule: fewer long transfers, more nearby high-quality experiences. Mérida rewards intentional planning.',
+                    'p6' => 'If you are organizing a congress and want an activities proposal aligned to your audience, the Visit Yucatán team can help build an agenda that fits the official program.',
+                ],
+            ],
+            [
+                'title_es' => 'Movilidad en Mérida: logística eficiente para congresos.',
+                'title_en' => 'Mobility in Mérida: efficient logistics for congresses.',
+                'slug' => 'movilidad-en-merida',
+                'published_at' => '2025-11-22',
+                'image' => 'images/home/section4/images/card-3.png',
+                'category' => 'Logística',
+                'excerpt_es' => 'Claves para trasladar grupos entre aeropuerto, hoteles y venues.',
+                'excerpt_en' => 'Keys to moving groups among airport, hotels, and venues.',
+                'mid_image' => $img['siglo'],
+                'mid_alt_es' => 'Distrito Norte y conectividad en Mérida',
+                'mid_alt_en' => 'Norte District and connectivity in Mérida',
+                'es' => [
+                    'intro' => 'En el turismo de reuniones, la movilidad es tan crítica como el venue. Un traslado fallido genera retrasos en cascada; una operación bien diseñada pasa desapercibida —y eso es exactamente lo que el organizador necesita. Mérida ofrece una ventaja estructural: distancias manejables entre aeropuerto, hoteles y distritos de reuniones.',
+                    'h3' => 'Planificar rutas, tiempos y picos de demanda.',
+                    'p1' => 'La llegada de un grupo grande exige anticipar ventanas de aterrizaje, capacidad de unidades y puntos de encuentro claros. Coordinar con proveedores locales experimentados reduce tiempos muertos en el aeropuerto y mejora la primera impresión del destino.',
+                    'p2' => 'Durante el evento, los shuttles entre hotel y sede deben alinearse al programa minuto a minuto. Señalética, staff visible y comunicación al delegado evitan confusiones, especialmente en jornadas con sesiones simultáneas o actividades sociales fuera del venue principal.',
+                    'h2' => 'Una ciudad que facilita la operación',
+                    'p3' => 'La configuración de Mérida —con Distrito Centro y Distrito Norte bien definidos— permite concentrar hospedaje cerca de la sede o diseñar rutas cortas y predecibles. Eso disminuye costos logísticos y aumenta puntualidad.',
+                    'p4' => 'También conviene prever movilidad para acompañantes y tiempos libres: unidades flexibles, recomendaciones caminables y alternativas seguras en horario nocturno. Una buena logística no solo mueve personas: sostiene la experiencia completa.',
+                    'p5' => 'Documentar tiempos reales de traslado en visitas de inspección ayuda a construir agendas realistas. Yucatán gana cuando el plan operativo se diseña con datos locales, no con supuestos genéricos.',
+                    'p6' => 'Si estás armando la logística de tu próximo congreso, podemos conectar tu comité con aliados de movilidad y un esquema de rutas adaptado a tu programa.',
+                ],
+                'en' => [
+                    'intro' => 'In meetings tourism, mobility is as critical as the venue. A failed transfer creates cascading delays; a well-designed operation goes unnoticed—and that is exactly what organizers need. Mérida offers a structural advantage: manageable distances among airport, hotels, and meetings districts.',
+                    'h3' => 'Plan routes, timings, and demand peaks.',
+                    'p1' => 'A large group arrival requires anticipating landing windows, vehicle capacity, and clear meeting points. Coordinating with experienced local suppliers reduces idle time at the airport and improves the destination’s first impression.',
+                    'p2' => 'During the event, hotel–venue shuttles must align with the minute-by-minute program. Signage, visible staff, and clear delegate communication prevent confusion, especially on days with parallel sessions or social activities outside the main venue.',
+                    'h2' => 'A city that eases operations',
+                    'p3' => 'Mérida’s layout—with well-defined Centro and Norte districts—allows concentrating lodging near the venue or designing short, predictable routes. That lowers logistics costs and improves punctuality.',
+                    'p4' => 'It is also wise to plan mobility for companions and free time: flexible vehicles, walkable recommendations, and safe nighttime options. Good logistics do not only move people—they sustain the full experience.',
+                    'p5' => 'Documenting real transfer times during site inspections helps build realistic agendas. Yucatán wins when the operating plan is designed with local data, not generic assumptions.',
+                    'p6' => 'If you are building logistics for your next congress, we can connect your committee with mobility partners and a route scheme adapted to your program.',
+                ],
+            ],
+            [
+                'title_es' => 'Sedes para congresos en Mérida: espacios que transforman cada evento.',
+                'title_en' => 'Congress venues in Mérida: spaces that transform every event.',
+                'slug' => 'sedes-para-congresos',
+                'published_at' => '2025-10-30',
+                'image' => 'images/home/section4/images/card-4.png',
+                'category' => 'Sedes',
+                'excerpt_es' => 'Del CIC y Siglo XXI a haciendas y venues con carácter.',
+                'excerpt_en' => 'From CIC and Siglo XXI to characterful haciendas and venues.',
+                'mid_image' => $img['card6'],
+                'mid_alt_es' => 'Espacio para eventos en Yucatán',
+                'mid_alt_en' => 'Event space in Yucatán',
+                'es' => [
+                    'intro' => 'Elegir sede es una de las decisiones más estratégicas de cualquier congreso. En Mérida, la oferta combina centros de convenciones de gran capacidad con haciendas, venues históricos y espacios contemporáneos que aportan identidad. Esa diversidad permite diseñar un evento completo: plenarias exigentes, breakouts eficientes y actividades sociales con carácter.',
+                    'h3' => 'Capacidad institucional y flexibilidad operativa.',
+                    'p1' => 'El Centro Internacional de Congresos (CIC) y el Centro de Convenciones Yucatán Siglo XXI concentran infraestructura moderna, salas configurables y entorno hotelero cercano. Son la base ideal cuando el programa demanda escala, tecnología y operación simultánea de múltiples sesiones.',
+                    'p2' => 'Alrededor de esos ejes, hoteles con salones propios y venues independientes amplían las opciones para comités, talleres o eventos paralelos sin saturar la sede principal.',
+                    'h2' => 'Espacios con narrativa propia',
+                    'p3' => 'Las haciendas y los espacios con historia aportan una dimensión emocional difícil de igualar. Una cena de gala bajo arcos coloniales o una sesión especial en un patio iluminado puede convertirse en el sello visual del congreso.',
+                    'p4' => 'La decisión correcta depende del perfil del evento: número de asistentes, formato híbrido, necesidades AV y el tono que la organización quiere proyectar. Yucatán permite mezclar lo institucional y lo experiencial en una sola ciudad.',
+                    'p5' => 'Una visita de inspección bien guiada acelera esa elección. Ver flujos de acceso, cocina, montaje y acústica en sitio evita sorpresas y alinea expectativas entre comité y proveedores.',
+                    'p6' => 'Si estás comparando sedes para tu próxima edición, te ayudamos a mapear opciones según capacidad, ubicación y narrativa de marca.',
+                ],
+                'en' => [
+                    'intro' => 'Choosing a venue is one of the most strategic decisions in any congress. In Mérida, the offer combines large-capacity convention centers with haciendas, historic venues, and contemporary spaces that add identity. That diversity makes it possible to design a complete event: demanding plenaries, efficient breakouts, and social activities with character.',
+                    'h3' => 'Institutional capacity and operational flexibility.',
+                    'p1' => 'The International Congress Center (CIC) and the Yucatán Siglo XXI Convention Center concentrate modern infrastructure, configurable rooms, and nearby hotels. They are the ideal base when the program demands scale, technology, and simultaneous multi-session operations.',
+                    'p2' => 'Around those hubs, hotels with their own meeting rooms and independent venues expand options for committees, workshops, or parallel events without saturating the main site.',
+                    'h2' => 'Spaces with their own narrative',
+                    'p3' => 'Haciendas and historic spaces add an emotional dimension that is hard to match. A gala dinner under colonial arches or a special session in a lit courtyard can become the visual signature of the congress.',
+                    'p4' => 'The right choice depends on the event profile: attendee numbers, hybrid format, AV needs, and the tone the organization wants to project. Yucatán lets you mix institutional and experiential settings in one city.',
+                    'p5' => 'A well-guided site inspection speeds that choice. Seeing access flows, kitchen, set-up, and acoustics on site avoids surprises and aligns expectations between committee and suppliers.',
+                    'p6' => 'If you are comparing venues for your next edition, we can help map options by capacity, location, and brand narrative.',
+                ],
+            ],
+            [
+                'title_es' => 'Mérida para congresos: la ciudad donde los grandes eventos encuentran hogar.',
+                'title_en' => 'Mérida for congresses: the city where great events find a home.',
+                'slug' => 'merida-para-congresos',
+                'published_at' => '2025-09-18',
+                'image' => 'images/home/section4/images/card-5.png',
+                'category' => 'Destinos',
+                'excerpt_es' => 'Por qué la capital yucateca se consolida como sede de reuniones.',
+                'excerpt_en' => 'Why Yucatán’s capital is consolidating as a meetings host city.',
+                'mid_image' => $img['card1'],
+                'mid_alt_es' => 'Mérida y su oferta urbana',
+                'mid_alt_en' => 'Mérida and its urban offer',
+                'es' => [
+                    'intro' => 'Hay ciudades que reciben eventos y ciudades que los abrazan. Mérida pertenece al segundo grupo: ofrece escala suficiente para congresos exigentes y, al mismo tiempo, una vida urbana caminable, segura y con identidad. Esa combinación explica por qué cada vez más asociaciones eligen la capital yucateca como sede.',
+                    'h3' => 'Equilibrio entre operación y experiencia.',
+                    'p1' => 'Un gran evento necesita hoteles, venues, conectividad y proveedores. Mérida los tiene concentrados en distritos claros, lo que simplifica la logística. Pero también ofrece algo que no cabe en una ficha técnica: la sensación de que la ciudad acompaña al programa.',
+                    'p2' => 'Delegados que pueden caminar a cenar, explorar el centro en un hueco de agenda o cerrar el día en un patio iluminado suelen evaluar mejor el destino. Esa valoración influye en renovaciones de sede y en el boca a boca dentro de la industria.',
+                    'h2' => 'Una capital preparada para crecer contigo',
+                    'p3' => 'La oferta hotelera y de servicios ha madurado junto con el turismo de reuniones. Eso permite escalar desde encuentros medianos hasta formatos de mayor aforo sin perder control operativo.',
+                    'p4' => 'Además, la cercanía con experiencias de naturaleza y cultura —sin traslados extremos— enriquece pre y post tours. Mérida no obliga a elegir entre eficiencia y descubrimiento: permite ambos.',
+                    'p5' => 'Para comités que buscan una sede con narrativa propia, la ciudad responde con patrimonio, gastronomía y hospitalidad genuina. Para quienes priorizan operación, responde con infraestructura y aliados especializados.',
+                    'p6' => 'Si estás definiendo la sede de tu próximo congreso, Mérida merece estar en la shortlist. Podemos ayudarte a evaluar fit, capacidad y experiencia de destino.',
+                ],
+                'en' => [
+                    'intro' => 'Some cities host events; others embrace them. Mérida belongs to the second group: it offers enough scale for demanding congresses and, at the same time, a walkable, safe urban life with identity. That combination explains why more associations choose Yucatán’s capital as their venue.',
+                    'h3' => 'Balance between operations and experience.',
+                    'p1' => 'A major event needs hotels, venues, connectivity, and suppliers. Mérida concentrates them in clear districts, which simplifies logistics. But it also offers something that does not fit on a spec sheet: the feeling that the city accompanies the program.',
+                    'p2' => 'Delegates who can walk to dinner, explore downtown in a schedule gap, or end the day in a lit courtyard tend to rate the destination higher. That rating influences venue renewals and word of mouth within the industry.',
+                    'h2' => 'A capital ready to grow with you',
+                    'p3' => 'The hotel and services offer has matured alongside meetings tourism. That makes it possible to scale from mid-size gatherings to larger formats without losing operational control.',
+                    'p4' => 'Proximity to nature and cultural experiences—without extreme transfers—also enriches pre and post tours. Mérida does not force a choice between efficiency and discovery: it allows both.',
+                    'p5' => 'For committees seeking a venue with its own narrative, the city answers with heritage, cuisine, and genuine hospitality. For those prioritizing operations, it answers with infrastructure and specialized partners.',
+                    'p6' => 'If you are defining the venue for your next congress, Mérida deserves a place on the shortlist. We can help you evaluate fit, capacity, and destination experience.',
+                ],
+            ],
+            [
+                'title_es' => 'Guía Rápida: los mejores tips para tu primera vez en Mérida.',
+                'title_en' => 'Quick guide: the best tips for your first time in Mérida.',
+                'slug' => 'guia-rapida-merida',
+                'published_at' => '2025-08-05',
+                'image' => 'images/home/section4/images/card-6.png',
+                'category' => 'Experiencias',
+                'excerpt_es' => 'Recomendaciones prácticas para delegados y acompañantes.',
+                'excerpt_en' => 'Practical recommendations for delegates and companions.',
+                'mid_image' => $img['card2'],
+                'mid_alt_es' => 'Experiencias en Mérida',
+                'mid_alt_en' => 'Experiences in Mérida',
+                'es' => [
+                    'intro' => 'Llegar por primera vez a Mérida para un congreso puede sentirse intenso: agenda cargada, ciudad nueva y ganas de aprovechar cada hueco. Esta guía rápida resume lo esencial para que delegados y acompañantes disfruten el destino sin complicar la logística del evento.',
+                    'h3' => 'Lo práctico primero: clima, ritmo y traslados.',
+                    'p1' => 'El clima es cálido la mayor parte del año: hidrátate, usa bloqueador y elige ropa cómoda entre sesiones. Si tu hotel está cerca de la sede, camina cuando sea posible; si no, confirma horarios de shuttle con anticipación para no perder el inicio de plenarias.',
+                    'p2' => 'Lleva efectivo pequeño para propinas y compras rápidas, pero en la mayoría de restaurantes y comercios del centro también es habitual el pago con tarjeta. Guarda una copia digital de tu acreditación y del programa del día.',
+                    'h2' => 'Tips que marcan la diferencia',
+                    'p3' => 'Reserva al menos una noche libre para gastronomía local: cochinita, sopa de lima o una cena contemporánea yucateca pueden ser el mejor souvenir del viaje. Si te sobra una mañana, el centro histórico se recorre bien a pie y concentra arquitectura, plazas y vida cotidiana.',
+                    'p4' => 'Pregunta a tu anfitrión local. En Yucatán siempre hay una recomendación genuina a la vuelta de la esquina: un café, una galería, un patio o un tour corto que no aparece en las listas genéricas.',
+                    'p5' => 'Si viajas con acompañantes, acuerda puntos de encuentro claros y horarios realistas. La ciudad es segura y hospitalaria, pero la puntualidad del programa del congreso sigue siendo prioridad.',
+                    'p6' => 'Con estos tips, tu primera vez en Mérida puede ser tan productiva como memorable. Bienvenido al destino donde los encuentros también se disfrutan.',
+                ],
+                'en' => [
+                    'intro' => 'Arriving in Mérida for the first time for a congress can feel intense: a packed agenda, a new city, and the desire to use every free slot. This quick guide covers the essentials so delegates and companions can enjoy the destination without complicating event logistics.',
+                    'h3' => 'Practical first: climate, pace, and transfers.',
+                    'p1' => 'The climate is warm most of the year: stay hydrated, use sunscreen, and choose comfortable clothes between sessions. If your hotel is near the venue, walk when possible; if not, confirm shuttle times in advance so you do not miss plenary starts.',
+                    'p2' => 'Carry small cash for tips and quick purchases, though card payment is common in most downtown restaurants and shops. Keep a digital copy of your badge and the day’s program.',
+                    'h2' => 'Tips that make a difference',
+                    'p3' => 'Save at least one free evening for local cuisine: cochinita, lima soup, or a contemporary Yucatecan dinner can be the best souvenir of the trip. If you have a free morning, the historic center is highly walkable and concentrates architecture, plazas, and everyday life.',
+                    'p4' => 'Ask your local host. In Yucatán there is always a genuine recommendation around the corner: a café, a gallery, a courtyard, or a short tour that does not appear on generic lists.',
+                    'p5' => 'If you travel with companions, agree on clear meeting points and realistic timings. The city is safe and welcoming, but congress punctuality remains the priority.',
+                    'p6' => 'With these tips, your first time in Mérida can be as productive as it is memorable. Welcome to the destination where gatherings are also meant to be enjoyed.',
+                ],
+            ],
+        ];
+
+        foreach ($posts as $index => $post) {
+            BlogPost::query()->create([
+                'title_es' => $post['title_es'],
+                'title_en' => $post['title_en'],
+                'slug' => $post['slug'],
+                'author' => 'Visit Yucatán',
+                'published_at' => Carbon::parse($post['published_at']),
+                'image' => $post['image'],
+                'category' => $post['category'],
+                'excerpt_es' => $post['excerpt_es'],
+                'excerpt_en' => $post['excerpt_en'],
+                'body_es' => $this->buildBody($post['es'], $post['mid_image'], $post['mid_alt_es']),
+                'body_en' => $this->buildBody($post['en'], $post['mid_image'], $post['mid_alt_en']),
+                'sort_order' => $index + 1,
+                'is_published' => true,
+                'filter_secondary' => null,
+                'filter_tertiary' => null,
+            ]);
+        }
+    }
+
+    /**
+     * @param  array{intro: string, h3: string, p1: string, p2: string, h2: string, p3: string, p4: string, p5: string, p6: string}  $content
+     */
+    private function buildBody(array $content, string $midImage, string $midAlt): string
+    {
+        return <<<HTML
+<p>{$content['intro']}</p>
+<h3>{$content['h3']}</h3>
+<p>{$content['p1']}</p>
+<p>{$content['p2']}</p>
+<figure><img src="{$midImage}" alt="{$midAlt}"></figure>
+<h2>{$content['h2']}</h2>
+<p>{$content['p3']}</p>
+<p>{$content['p4']}</p>
+<p>{$content['p5']}</p>
+<p>{$content['p6']}</p>
+HTML;
+    }
+}

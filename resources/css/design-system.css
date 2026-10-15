@@ -1,0 +1,387 @@
+/* Visit Yucatán — design tokens & type scale */
+
+@font-face {
+    font-family: 'Clarendon';
+    src: url('../fonts/clarendon/Clarendon-Regular.otf') format('opentype');
+    font-weight: 400 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('../fonts/circular/CircularStd-Book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    /* Brand colors */
+    --color-yellow-700: #d9a700;
+    --color-yellow-500: #f8c100;
+    --color-yellow-300: #ffe082;
+    --color-yellow-100: #fff0bf;
+
+    --color-orange-700: #b85a1d;
+    --color-orange-500: #d56e26;
+    --color-orange-300: #f4a06a;
+    --color-orange-100: #ffe0cc;
+
+    --color-green-700: #596e2f;
+    --color-green-500: #6d8639;
+    --color-green-300: #aac17b;
+    --color-green-100: #e3ecd0;
+
+    --color-blue-700: #3578a2;
+    --color-blue-500: #4392c6;
+    --color-blue-300: #7fbde3;
+    --color-blue-100: #d6ebf7;
+
+    --color-beige-500: #f0ebdd;
+    --color-beige-300: #f8f5ef;
+    --color-beige-100: #ffffff;
+
+    --color-black-900: #141112;
+    --color-black-700: #212121;
+    --color-black-500: #444444;
+    --color-black-300: #b8aeab;
+    --color-black-100: #eae5e3;
+
+    /* Site content width */
+    --max-width-site: 1600px;
+
+    /* Type families — Clarendon: H/S · Circular: Body/Btn/Label */
+    --font-display: 'Clarendon', ui-serif, Georgia, serif;
+    --font-sans: 'Circular Std', ui-sans-serif, system-ui, sans-serif;
+    --font-body: var(--font-sans);
+
+    /* Book ≈ regular */
+    --font-weight-book: 400;
+}
+
+/* ——— Headlines (H1–H4) · Display · Medium · mobile → md desktop ——— */
+
+@utility text-h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 2.5rem; /* 40px */
+    line-height: 3rem; /* 48px · 120% */
+
+    @variant md {
+        font-size: 3rem; /* 48px */
+        line-height: 4rem; /* 64px */
+    }
+}
+
+@utility text-h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.7rem; /* 43.2px · 120% */
+
+    @variant md {
+        font-size: 2.5rem; /* 40px */
+        line-height: 3.5rem; /* 56px */
+    }
+}
+
+@utility text-h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 2rem; /* 32px */
+    line-height: 2.4rem; /* 38.4px · 120% */
+
+    @variant md {
+        font-size: 2.25rem; /* 36px */
+        line-height: 3rem; /* 48px */
+    }
+}
+
+@utility text-h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.75rem; /* 28px */
+    line-height: 2.1rem; /* 33.6px · 120% */
+
+    @variant md {
+        font-size: 2rem; /* 32px */
+        line-height: 2.5rem; /* 40px */
+    }
+}
+
+/* ——— Subtitles (S1–S3) · Display · Medium ——— */
+
+@utility text-s1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.8rem; /* 28.8px · 120% */
+
+    @variant md {
+        font-size: 1.75rem; /* 28px */
+        line-height: 2.25rem; /* 36px */
+    }
+}
+
+@utility text-s2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5rem; /* 24px · 120% */
+
+    @variant md {
+        font-size: 1.5rem; /* 24px */
+        line-height: 2rem; /* 32px */
+    }
+}
+
+@utility text-s3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5rem; /* 24px · 120% */
+
+    @variant md {
+        font-size: 1.25rem; /* 20px */
+        line-height: 2rem; /* 32px */
+    }
+}
+
+/* ——— Body (B1–B3) · Sans · Book/Bold via font-book | font-bold ——— */
+
+@utility text-b1 {
+    font-family: var(--font-body);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5rem; /* 24px */
+}
+
+@utility text-b2 {
+    font-family: var(--font-body);
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+}
+
+@utility text-b3 {
+    font-family: var(--font-body);
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+}
+
+/* ——— Buttons (Btn1–Btn3) · Sans · Book/Bold via font-book | font-bold ——— */
+
+@utility text-btn1 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5rem; /* 24px */
+}
+
+@utility text-btn2 {
+    font-family: var(--font-sans);
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+}
+
+@utility text-btn3 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+}
+
+/* Title → body stack: 8px */
+@utility mt-title-body {
+    margin-top: 0.5rem;
+}
+
+@utility text-label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1rem; /* 16px */
+}
+
+@utility font-book {
+    font-weight: var(--font-weight-book);
+}
+
+/* ——— Button component · pill · Circular uppercase ——— */
+
+@utility btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-book);
+    font-size: 1rem; /* Btn2 */
+    line-height: 1.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 9999px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 0.75rem 1.5rem;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease,
+        border-color 150ms ease,
+        opacity 150ms ease;
+
+    &:disabled,
+    &[aria-disabled='true'] {
+        opacity: 0.45;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+@utility btn-sm {
+    font-size: 0.875rem; /* Btn3 */
+    line-height: 1.25rem;
+    padding: 0.625rem 1.25rem;
+}
+
+@utility btn-lg {
+    font-size: 1.125rem; /* Btn1 */
+    line-height: 1.5rem;
+    padding: 0.875rem 1.75rem;
+}
+
+/* Primary — black-900 → green-500 */
+@utility btn-primary {
+    background-color: var(--color-black-900);
+    border-color: var(--color-black-900);
+    color: var(--color-beige-100);
+
+    &:hover {
+        background-color: var(--color-green-500);
+        border-color: var(--color-green-500);
+        color: var(--color-beige-100);
+    }
+}
+
+/* Green fill — green-500 */
+@utility btn-green {
+    background-color: var(--color-green-500);
+    border-color: var(--color-green-500);
+    color: var(--color-beige-100);
+
+    &:hover {
+        background-color: var(--color-green-700);
+        border-color: var(--color-green-700);
+    }
+}
+
+/* Secondary — white → black-900 */
+@utility btn-secondary {
+    background-color: var(--color-beige-100);
+    border-color: var(--color-black-900);
+    color: var(--color-black-900);
+
+    &:hover {
+        background-color: var(--color-black-900);
+        border-color: var(--color-black-900);
+        color: var(--color-beige-100);
+    }
+}
+
+/* Tertiary — beige-500 → white */
+@utility btn-tertiary {
+    background-color: var(--color-beige-500);
+    border-color: var(--color-beige-500);
+    color: var(--color-black-900);
+
+    &:hover {
+        background-color: var(--color-beige-100);
+        border-color: var(--color-beige-100);
+        color: var(--color-black-900);
+    }
+}
+
+/* Auxiliar — ghost / text only */
+@utility btn-auxiliar {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-black-900);
+    border-radius: 0;
+    padding-inline: 0.125rem;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+@utility btn-auxiliar-green {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-green-500);
+    border-radius: 0;
+    padding-inline: 0.125rem;
+
+    &:hover {
+        color: var(--color-green-700);
+    }
+}
+
+@utility btn-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 1.125em;
+    height: 1.125em;
+}
+
+/* Carousel track: keep left alignment, bleed to viewport right edge */
+@utility carousel-bleed-right {
+    width: calc(100% + ((100vw - min(100vw, var(--max-width-site))) / 2) + 1.5rem);
+    max-width: none;
+    margin-right: calc(-1 * (((100vw - min(100vw, var(--max-width-site))) / 2) + 1.5rem));
+
+    @media (width >= 64rem) {
+        width: calc(100% + ((100vw - min(100vw, var(--max-width-site))) / 2) + 2.5rem);
+        margin-right: calc(-1 * (((100vw - min(100vw, var(--max-width-site))) / 2) + 2.5rem));
+    }
+}
+
+/* ——— Filter / pagination selects ——— */
+
+@utility select-filter {
+    appearance: none;
+    border: 1px solid var(--color-black-900);
+    background-color: var(--color-beige-500);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%231A1A1A' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.25' d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    background-size: 0.75rem 0.5rem;
+    padding: 0.625rem 2.5rem 0.625rem 1rem;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-book);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-black-900);
+    outline: none;
+    cursor: pointer;
+}
+
+@utility select-filter-sm {
+    appearance: none;
+    border: 1px solid var(--color-black-900);
+    background-color: var(--color-beige-500);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%231A1A1A' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.25' d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.75rem 0.5rem;
+    padding: 0.375rem 2.25rem 0.375rem 0.875rem;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-book);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--color-black-900);
+    outline: none;
+    cursor: pointer;
+}

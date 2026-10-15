@@ -1,0 +1,124 @@
+@extends('layouts.site')
+
+@section('title', __('site.nav.district_supports').' — '.config('app.name'))
+@section('body_class', 'bg-beige-500')
+
+@section('content')
+    @php
+        $bannerVideo = 'videos/eventos.mov';
+
+        $icons = [
+            'images/iconos/Nuevos iconos (2).svg',
+            'images/iconos/Nuevos iconos (1).svg',
+            'images/iconos/Nuevos iconos.svg',
+            'images/iconos/Nuevos iconos (3).svg',
+            'images/iconos/Nuevos iconos (6).svg',
+            'images/iconos/Nuevos iconos (7).svg',
+        ];
+
+        $supportCards = collect(__('site.apoyos_page.items'))
+            ->values()
+            ->map(function (array $item, int $index) use ($icons) {
+                return [
+                    ...$item,
+                    'image' => 'images/apoyos/apoyo-'.($index + 1).'.png',
+                    'icon' => $icons[$index] ?? $icons[0],
+                ];
+            })
+            ->all();
+    @endphp
+
+    <main class="bg-beige-500 text-black-900">
+        <section
+            class="relative flex h-[calc(100svh-90px)] min-h-[calc(100svh-90px)] flex-col overflow-hidden bg-black-900"
+            aria-label="{{ __('site.nav.district_supports') }}"
+        >
+            <video
+                class="absolute inset-0 h-full w-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-hidden="true"
+            >
+                <source src="{{ asset($bannerVideo) }}" type="video/mp4">
+                <source src="{{ asset($bannerVideo) }}" type="video/quicktime">
+            </video>
+
+            <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
+
+            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-10 pt-24 text-center lg:px-10 lg:pb-14">
+                <a
+                    href="{{ asset('files/bidding-book.txt') }}"
+                    download="bidding-book-visit-yucatan.txt"
+                    class="btn btn-sm inline-flex items-center gap-2 border-beige-100 bg-beige-100 text-black-900 hover:border-black-900 hover:bg-black-900 hover:text-beige-100"
+                >
+                    <span>{{ __('site.apoyos_page.download_cta') }}</span>
+                    <svg class="size-4 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M8 2.5v8M8 10.5L5 7.5M8 10.5L11 7.5M3 13.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <section class="bg-green-300 py-16 lg:py-24" aria-labelledby="apoyos-program-title">
+            <div class="mx-auto max-w-site px-6 lg:px-10">
+                <div class="mx-auto max-w-3xl text-center text-black-900">
+                    <h2 id="apoyos-program-title" class="text-s1 uppercase">
+                        {{ __('site.apoyos_page.program_title') }}
+                    </h2>
+                    <p class="mt-4 text-b2 font-book text-black-900 lg:mt-5">
+                        {{ __('site.apoyos_page.program_text') }}
+                    </p>
+                </div>
+
+                <ul class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+                    @foreach ($supportCards as $card)
+                        <li class="flex flex-col overflow-hidden rounded-2xl bg-green-100 text-center text-black-900">
+                            <div class="flex flex-1 flex-col px-5 pt-8 sm:px-6 sm:pt-10">
+                                <span
+                                    class="mx-auto size-12 shrink-0 bg-green-500 lg:size-14 [mask-image:var(--apoyo-icon)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:var(--apoyo-icon)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+                                    style="--apoyo-icon: url('{{ asset($card['icon']) }}')"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <h3 class="mt-5 text-b1 font-bold text-black-900 lg:mt-6">
+                                    {{ $card['title'] }}
+                                </h3>
+
+                                <p class="mt-2 flex-1 text-b2 font-book text-black-900">
+                                    {{ $card['description'] }}
+                                </p>
+                            </div>
+
+                            <div class="px-4 pb-4 pt-6 sm:px-5 sm:pb-5 sm:pt-8">
+                                <img
+                                    src="{{ asset($card['image']) }}"
+                                    alt=""
+                                    class="aspect-[4/3] w-full rounded-xl object-cover"
+                                >
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+
+                <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5 lg:mt-14">
+                    <x-button variant="primary" href="{{ route('pages.plan') }}">
+                        {{ __('site.apoyos_page.request_info_cta') }}
+                    </x-button>
+
+                    <a
+                        href="{{ asset('files/bidding-book.txt') }}"
+                        download="bidding-book-visit-yucatan.txt"
+                        class="btn btn-sm inline-flex items-center gap-2 border-black-900 bg-transparent text-black-900 hover:border-black-900 hover:bg-black-900 hover:text-beige-100"
+                    >
+                        <span>{{ __('site.apoyos_page.download_cta') }}</span>
+                        <svg class="size-4 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path d="M8 2.5v8M8 10.5L5 7.5M8 10.5L11 7.5M3 13.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection

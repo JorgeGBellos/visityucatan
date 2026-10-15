@@ -1,0 +1,25 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-BqGbkpws.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/fonts/circular/CircularStd-Book.ttf": {
+    "file": "assets/CircularStd-Book-BQj9D7Nn.ttf",
+    "src": "resources/fonts/circular/CircularStd-Book.ttf"
+  },
+  "resources/fonts/clarendon/Clarendon-Regular.otf": {
+    "file": "assets/Clarendon-Regular-CqAjIBs2.otf",
+    "src": "resources/fonts/clarendon/Clarendon-Regular.otf"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-N2_AMSc2.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

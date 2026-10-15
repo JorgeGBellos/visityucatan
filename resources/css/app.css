@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+@import './design-system.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@keyframes cintilla-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes cintilla-scroll-reverse {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Loop for duplicated tiles with slight horizontal overlap */
+@keyframes cintilla-scroll-overlap {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100vw + 1rem));
+    }
+}
+
+@utility animate-cintilla {
+    animation: cintilla-scroll 45s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@utility animate-cintilla-reverse {
+    animation: cintilla-scroll-reverse 45s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@utility animate-cintilla-overlap {
+    animation: cintilla-scroll-overlap 45s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@keyframes float-y {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+@utility animate-float {
+    animation: float-y 1.8s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+

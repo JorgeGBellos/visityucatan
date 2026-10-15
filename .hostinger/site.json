@@ -1,0 +1,9 @@
+{
+  "domain": "aquamarine-cat-898212.hostingersite.com",
+  "username": "u620697284",
+  "type": "php",
+  "order_id": 48287049,
+  "php_version": "8.3",
+  "git_directory": "visityucatan",
+  "notes": "Laravel deploys into public_html/visityucatan via Git. public_html/index.php bootstraps ./visityucatan and usePublicPath(public_html). Videos stay in public_html/videos (not in git). Legacy app before cutover lives in the sibling directory laravel/."
+}
