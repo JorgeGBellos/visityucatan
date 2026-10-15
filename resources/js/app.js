@@ -66,19 +66,23 @@ Alpine.data('siteCarousel', () => ({
     },
 }));
 
-Alpine.data('statCounter', (target, prefix = '', suffix = '', pad = 0) => ({
+Alpine.data('statCounter', (target, prefix = '', suffix = '', pad = 0, grouped = false) => ({
     current: 0,
     started: false,
     target: Number(target),
     prefix,
     suffix,
     pad: Number(pad) || 0,
+    grouped: Boolean(grouped),
 
     get display() {
         const n = Math.round(this.current);
         const digits = this.pad > 0 ? String(n).padStart(this.pad, '0') : String(n);
+        const formatted = this.grouped
+            ? digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            : digits;
 
-        return `${this.prefix}${digits}${this.suffix}`;
+        return `${this.prefix}${formatted}${this.suffix}`;
     },
 
     init() {

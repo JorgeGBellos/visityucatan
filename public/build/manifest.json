@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-BqGbkpws.css",
+    "file": "assets/app-CmcHP2aG.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -17,7 +17,7 @@
     "src": "resources/fonts/clarendon/Clarendon-Regular.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-N2_AMSc2.js",
+    "file": "assets/app-DJHresUb.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

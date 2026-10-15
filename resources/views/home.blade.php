@@ -6,21 +6,27 @@
     @php
     $homeCms = cms_page('home');
 
-    $statsIcons = [
-        'images/iconos/home/Nuevos iconos.svg',
-        'images/iconos/home/Nuevos iconos (1).svg',
-        'images/iconos/home/Nuevos iconos (2).svg',
-        'images/iconos/home/Nuevos iconos (3).svg',
+    $destinoIcons = [
+        'images/home/destino/hoteles.png',
+        'images/home/destino/habitaciones.png',
+        'images/home/destino/camas.png',
+        'images/home/destino/universidades.png',
+        'images/home/destino/temperatura.png',
+        'images/home/destino/recintos-tradicionales.png',
+        'images/home/destino/recintos-no-tradicionales.png',
+        'images/home/destino/rutas.png',
+        'images/home/destino/frecuencia.png',
+        'images/home/destino/conexiones.png',
     ];
 
-    $parseStatValue = function (string $value): array {
-        if (preg_match('/^(\D*?)(\d+)(.*)$/u', $value, $m)) {
+    $parseDestinoValue = function (string $value): array {
+        if (preg_match('/^(\D*?)([\d][\d,]*)(.*)$/u', $value, $matches)) {
             return [
                 'animated' => true,
-                'count' => (int) $m[2],
-                'prefix' => $m[1],
-                'suffix' => $m[3],
-                'pad' => strlen($m[2]),
+                'count' => (int) str_replace(',', '', $matches[2]),
+                'prefix' => $matches[1],
+                'suffix' => $matches[3],
+                'grouped' => str_contains($matches[2], ','),
             ];
         }
 
@@ -29,20 +35,20 @@
             'count' => null,
             'prefix' => '',
             'suffix' => '',
-            'pad' => 0,
+            'grouped' => false,
         ];
     };
 
-    $stats = collect(__('site.home.stats'))
+    $destinoStats = collect(__('site.home.destino_stats'))
         ->values()
-        ->map(function ($item, int $index) use ($statsIcons, $parseStatValue) {
-            $value = $item['value'] ?? ($item[0] ?? '');
+        ->map(function (array $item, int $index) use ($destinoIcons, $parseDestinoValue) {
+            $value = $item['value'] ?? '';
 
             return [
                 'value' => $value,
-                'label' => $item['label'] ?? ($item[1] ?? ''),
-                'icon' => $statsIcons[$index] ?? $statsIcons[0],
-                ...$parseStatValue($value),
+                'label' => $item['label'] ?? '',
+                'icon' => $destinoIcons[$index] ?? $destinoIcons[0],
+                ...$parseDestinoValue($value),
             ];
         })
         ->all();
@@ -92,12 +98,12 @@
     $patrocinioText = $homeCms->text('patrocinio.text', 'site.home.patrocinio_text');
     $patrocinioCta = $homeCms->text('patrocinio.cta', 'site.home.patrocinio_cta');
     $patrocinioIcons = [
-        'images/home/section3/icon-3.svg',
-        'images/home/section3/icon-1.svg',
-        'images/iconos/home/Nuevos iconos.svg',
-        'images/iconos/Nuevos iconos (9).svg',
-        'images/home/section4/icons/icon-4.svg',
-        'images/home/section4/icons/icon-5.svg',
+        'images/home/patrocinio/apoyo-economico.png',
+        'images/home/patrocinio/descuentos-recintos.png',
+        'images/home/patrocinio/espectaculos.png',
+        'images/home/patrocinio/aerolineas.png',
+        'images/home/patrocinio/vinculacion-turistica.png',
+        'images/home/patrocinio/vinculacion-institucional.png',
     ];
     $patrocinioItems = collect(__('site.home.patrocinio_items'))
         ->values()
@@ -129,25 +135,6 @@
     $fidetureCta = $homeCms->text('fideture.cta', 'site.home.fideture_cta');
 
     if ($homeCms->enabled()) {
-        $cmsStats = $homeCms->list('stats');
-        if ($cmsStats !== []) {
-            $stats = collect($cmsStats)
-                ->values()
-                ->map(function (array $row, int $index) use ($statsIcons, $parseStatValue) {
-                    $value = $row['line_1'] ?? '';
-
-                    return [
-                        'value' => $value,
-                        'label' => $row['line_2'] ?? '',
-                        'icon' => $statsIcons[$index] ?? $statsIcons[0],
-                        ...$parseStatValue($value),
-                    ];
-                })
-                ->filter(fn (array $stat) => filled($stat['value']) || filled($stat['label']))
-                ->values()
-                ->all();
-        }
-
         $cmsServicios = $homeCms->list('servicios.items');
         if ($cmsServicios !== []) {
             $servicioCards = collect($cmsServicios)
@@ -168,7 +155,6 @@
 @endphp
 
     <main class="bg-beige-300">
-        <div class="relative">
             <section
                 class="relative flex h-[calc(100svh-90px)] min-h-[calc(100svh-90px)] flex-col overflow-hidden bg-black-900"
                 aria-labelledby="home-hero-title"
@@ -188,9 +174,8 @@
 
                 <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
 
-                {{-- Título anclado al fondo; en desktop el pb = 60px + mitad de la barra solapada --}}
                 <div
-                    class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-[60px] text-center lg:px-10 md:[padding-bottom:calc(60px+(var(--home-stats-h,148px)/2))]"
+                    class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16"
                 >
                     <div class="flex flex-col items-center gap-[30px]">
                         <img
@@ -208,86 +193,44 @@
                 </div>
             </section>
 
-            {{-- Stats desktop: mitad dentro del hero, mitad sobre la siguiente sección --}}
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 hidden translate-y-1/2 justify-center px-6 md:flex lg:px-10">
-                <ul
-                    x-data
-                    x-init="
-                        const setH = () => {
-                            const h = $el.getBoundingClientRect().height;
-                            if (h > 0) document.documentElement.style.setProperty('--home-stats-h', `${h}px`);
-                        };
-                        $nextTick(setH);
-                        new ResizeObserver(setH).observe($el);
-                    "
-                    class="pointer-events-auto flex w-full max-w-[1000px] items-stretch overflow-hidden rounded-2xl bg-green-700"
-                    aria-label="{{ __('site.home.stats_aria') }}"
-                >
-                    @foreach ($stats as $index => $stat)
-                        @if ($index > 0)
-                            <li class="flex w-px shrink-0 items-stretch py-6" aria-hidden="true">
-                                <span class="w-px bg-beige-100/80"></span>
-                            </li>
-                        @endif
-                        <li class="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-6 text-center sm:px-4">
+        <section
+            class="bg-green-100 py-12 md:py-16 lg:py-20"
+            aria-labelledby="home-destino-title"
+        >
+            <div class="mx-auto max-w-site px-6 lg:px-10">
+                <h2 id="home-destino-title" class="text-center font-display text-b1 text-black-900 md:text-s2">
+                    {{ __('site.home.destino_stats_title') }}
+                </h2>
+
+                <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:mt-14 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-12">
+                    @foreach ($destinoStats as $stat)
+                        <li class="flex flex-col items-center px-2 text-center">
                             <img
                                 src="{{ asset($stat['icon']) }}"
                                 alt=""
-                                class="h-8 w-8 object-contain"
+                                class="size-8 object-contain"
                                 width="32"
                                 height="32"
                                 aria-hidden="true"
                             >
                             @if ($stat['animated'])
                                 <p
-                                    class="text-s2 leading-tight text-beige-100"
-                                    x-data="statCounter({{ $stat['count'] }}, @js($stat['prefix']), @js($stat['suffix']), {{ $stat['pad'] }})"
+                                    class="mt-3 font-display text-s1 leading-none text-green-700"
+                                    x-data="statCounter({{ $stat['count'] }}, @js($stat['prefix']), @js($stat['suffix']), 0, {{ $stat['grouped'] ? 'true' : 'false' }})"
                                     x-text="display"
                                 >{{ $stat['value'] }}</p>
                             @else
-                                <p class="text-s2 leading-tight text-beige-100">
+                                <p class="mt-3 font-display text-s1 leading-none text-green-700">
                                     {{ $stat['value'] }}
                                 </p>
                             @endif
-                            <p class="text-b3 font-book leading-tight text-beige-100/90">
+                            <p class="mt-2 max-w-[12rem] text-[0.7rem] font-book uppercase leading-tight tracking-[0.06em] text-black-900">
                                 {{ $stat['label'] }}
                             </p>
                         </li>
                     @endforeach
                 </ul>
             </div>
-        </div>
-
-        {{-- Stats móvil: grid 2x2 --}}
-        <section class="bg-beige-500 px-6 py-8 md:hidden" aria-label="{{ __('site.home.stats_aria') }}">
-            <ul class="grid grid-cols-2 gap-3">
-                @foreach ($stats as $stat)
-                    <li class="flex min-h-[7rem] flex-col items-center justify-center gap-2 rounded-2xl bg-green-700 px-3 py-5 text-center">
-                        <img
-                            src="{{ asset($stat['icon']) }}"
-                            alt=""
-                            class="h-7 w-7 object-contain"
-                            width="28"
-                            height="28"
-                            aria-hidden="true"
-                        >
-                        @if ($stat['animated'])
-                            <p
-                                class="text-s2 leading-tight text-beige-100"
-                                x-data="statCounter({{ $stat['count'] }}, @js($stat['prefix']), @js($stat['suffix']), {{ $stat['pad'] }})"
-                                x-text="display"
-                            >{{ $stat['value'] }}</p>
-                        @else
-                            <p class="text-s2 leading-tight text-beige-100">
-                                {{ $stat['value'] }}
-                            </p>
-                        @endif
-                        <p class="text-b3 font-book leading-tight text-beige-100/90">
-                            {{ $stat['label'] }}
-                        </p>
-                    </li>
-                @endforeach
-            </ul>
         </section>
 
         <section class="bg-beige-500 pt-12 pb-16 md:pt-20 md:pb-20 lg:pt-30 lg:pb-24" aria-labelledby="about-title">
@@ -401,11 +344,14 @@
                 <ul class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:mt-12 lg:grid-cols-6 lg:gap-5">
                     @foreach ($patrocinioItems as $item)
                         <li class="flex flex-col items-center rounded-lg bg-beige-100 px-3 py-5 text-center sm:px-4 sm:py-6">
-                            <span
-                                class="size-[60px] shrink-0 bg-green-700 [mask-image:var(--patrocinio-icon)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:var(--patrocinio-icon)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
-                                style="--patrocinio-icon: url('{{ asset($item['icon']) }}')"
+                            <img
+                                src="{{ asset($item['icon']) }}"
+                                alt=""
+                                class="size-[60px] shrink-0 object-contain"
+                                width="60"
+                                height="60"
                                 aria-hidden="true"
-                            ></span>
+                            >
                             <p class="mt-4 text-b2 font-bold text-black-900">
                                 {{ $item['label'] }}
                             </p>
