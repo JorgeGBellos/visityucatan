@@ -37,9 +37,6 @@
         $culturaText = $whyCms->text('cultura.text', 'site.why_page.cultura_text');
         $culturaText2 = $whyCms->text('cultura.text_2', 'site.why_page.cultura_text_2');
         $culturaCta = $whyCms->text('cultura.cta', 'site.why_page.cultura_cta');
-        $aliadosTitle = $whyCms->text('aliados.title', 'site.why_page.aliados_title');
-        $aliadosText = $whyCms->text('aliados.text', 'site.why_page.aliados_text');
-        $aliadosCta = $whyCms->text('aliados.cta', 'site.why_page.aliados_cta');
         $footerHeroTitle = $whyCms->text('footer.title', 'site.why_page.footer_hero_title');
         $footerHeroText = $whyCms->text('footer.text', 'site.why_page.footer_hero_text');
 
@@ -144,14 +141,6 @@
             }
         }
 
-        $aliados = \App\Models\Ally::query()
-            ->published()
-            ->newest()
-            ->limit(8)
-            ->get()
-            ->map(fn (\App\Models\Ally $ally) => $ally->toCarouselItem())
-            ->values()
-            ->all();
     @endphp
 
     <main class="bg-beige-500 text-black-900">
@@ -462,15 +451,6 @@
             </div>
         </section>
 
-        {{-- 8. Aliados / Hospitalidad Yucateca --}}
-        @include('partials.aliados-carousel', [
-            'aliados' => $aliados,
-            'titleId' => 'why-aliados-title',
-            'title' => $aliadosTitle,
-            'text' => $aliadosText,
-            'cta' => $aliadosCta,
-            'sectionClass' => 'py-16 lg:py-24',
-        ])
     </main>
 @endsection
 

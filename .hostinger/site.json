@@ -5,5 +5,8 @@
   "order_id": 48287049,
   "php_version": "8.3",
   "git_directory": "visityucatan",
-  "notes": "Laravel deploys into public_html/visityucatan via Git. public_html/index.php bootstraps ./visityucatan and usePublicPath(public_html). Videos stay in public_html/videos (not in git). Legacy app before cutover lives in the sibling directory laravel/."
+  "repository": "https://github.com/JorgeGBellos/visityucatan",
+  "branch": "main",
+  "webhook": "https://webhooks.hostinger.com/deploy/cc9e6216c9d2359e346d54a455dbb6d3",
+  "notes": "Laravel deploys into public_html/visityucatan via the GitHub push webhook. public_html/index.php bootstraps ./visityucatan and usePublicPath(public_html). Videos stay in public_html/videos (not in git). Legacy app remains in the sibling directory laravel/."
 }

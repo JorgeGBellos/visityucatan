@@ -15,9 +15,6 @@
         $teamTitle = $aboutCms->text('team.title', 'site.about_page.team_title');
         $teamText = $aboutCms->text('team.text', 'site.about_page.team_text');
         $teamText2 = $aboutCms->text('team.text_2', 'site.about_page.team_text_2');
-        $fidetureTitle = $aboutCms->text('fideture.title', 'site.home.fideture_title');
-        $fidetureText = $aboutCms->text('fideture.text', 'site.home.fideture_text');
-        $fidetureCta = $aboutCms->text('fideture.cta', 'site.home.fideture_cta');
 
         $recognitionLogos = [
             'images/Logos/Reconocimientos/premios heel.png',
@@ -273,17 +270,6 @@
         @include('partials.blog-carousel', [
             'titleId' => 'about-blog-carousel-title',
             'sectionClass' => 'py-16 lg:py-24',
-        ])
-
-        @include('partials.fideture-block', [
-            'titleId' => 'about-fideture-title',
-            'title' => $fidetureTitle,
-            'text' => $fidetureText,
-            'cta' => $fidetureCta,
-            'ctaHref' => route('pages.fideture'),
-            'sectionClass' => 'py-16 lg:py-24',
-            'backgroundImage' => 'images/home/Frame 106.png',
-            'useRichText' => true,
         ])
     </main>
 @endsection
