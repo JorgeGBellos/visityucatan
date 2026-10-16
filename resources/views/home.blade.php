@@ -198,7 +198,7 @@
             aria-labelledby="home-destino-title"
         >
             <div class="mx-auto max-w-site px-6 lg:px-10">
-                <h2 id="home-destino-title" class="text-center font-display text-b1 text-black-900 md:text-s2">
+                <h2 id="home-destino-title" class="text-center font-display text-b1 text-black-900 underline decoration-green-700 decoration-2 underline-offset-8 md:text-s2">
                     {{ __('site.home.destino_stats_title') }}
                 </h2>
 
