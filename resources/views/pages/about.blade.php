@@ -15,6 +15,11 @@
         $teamTitle = $aboutCms->text('team.title', 'site.about_page.team_title');
         $teamText = $aboutCms->text('team.text', 'site.about_page.team_text');
         $teamText2 = $aboutCms->text('team.text_2', 'site.about_page.team_text_2');
+        $locationEyebrow = $aboutCms->text('location.eyebrow', 'site.about_page.location_eyebrow');
+        $locationTitle = $aboutCms->text('location.title', 'site.about_page.location_title');
+        $locationAddress = $aboutCms->text('location.address', 'site.about_page.location_address');
+        $locationCta = $aboutCms->text('location.cta', 'site.about_page.location_cta');
+        $locationMaps = 'https://maps.google.com/?q='.urlencode($locationAddress);
 
         $recognitionLogos = [
             'images/Logos/Reconocimientos/premios heel.png',
@@ -263,6 +268,40 @@
                             </article>
                         @endforeach
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-beige-500 py-16 lg:py-24" aria-labelledby="about-location-title">
+            <div class="mx-auto grid max-w-site items-center gap-10 px-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(16rem,0.7fr)] lg:gap-16 lg:px-10">
+                <img
+                    src="{{ asset('images/usmap.svg') }}"
+                    alt="{{ __('site.about_page.location_map_alt') }}"
+                    class="h-auto w-full"
+                    width="1001"
+                    height="593"
+                >
+
+                <div class="max-w-sm lg:justify-self-end">
+                    <p class="text-btn2 font-book uppercase tracking-[0.04em] text-black-900">
+                        {{ $locationEyebrow }}
+                    </p>
+                    <h2 id="about-location-title" class="mt-title-body text-s3 text-black-900">
+                        {{ $locationTitle }}
+                    </h2>
+                    <p class="mt-title-body text-b2 font-bold text-black-900">
+                        {{ $locationAddress }}
+                    </p>
+                    <x-button
+                        class="mt-6"
+                        variant="secondary"
+                        size="sm"
+                        href="{{ $locationMaps }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {{ $locationCta }}
+                    </x-button>
                 </div>
             </div>
         </section>

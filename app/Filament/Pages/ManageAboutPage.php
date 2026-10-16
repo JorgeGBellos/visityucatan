@@ -29,7 +29,7 @@ class ManageAboutPage extends ManagePageContent
 
     protected function cmsHelperText(): string
     {
-        return 'Activa para que /nosotros use el hero, la sección Visit y el equipo de este panel.';
+        return 'Activa para que /nosotros use el hero, la sección Visit, el equipo y la ubicación de este panel.';
     }
 
     protected function localeFields(string $locale): array
@@ -71,6 +71,16 @@ class ManageAboutPage extends ManagePageContent
                         ->reorderable()
                         ->defaultItems(0),
                 ]),
+
+            Section::make('Ubicación')
+                ->collapsed()
+                ->description('El mapa ilustrado es fijo. El botón abre Google Maps con la dirección.')
+                ->schema([
+                    TextInput::make("content.{$locale}.location.eyebrow")->label('Etiqueta')->maxLength(80),
+                    Textarea::make("content.{$locale}.location.title")->label('Título')->rows(3),
+                    Textarea::make("content.{$locale}.location.address")->label('Dirección')->rows(2),
+                    TextInput::make("content.{$locale}.location.cta")->label('Botón')->maxLength(120),
+                ]),
         ];
     }
 
@@ -108,6 +118,12 @@ class ManageAboutPage extends ManagePageContent
                         'image' => $member['image'] ?? null,
                     ])
                     ->all(),
+            ],
+            'location' => [
+                'eyebrow' => __('site.about_page.location_eyebrow', [], $locale),
+                'title' => __('site.about_page.location_title', [], $locale),
+                'address' => __('site.about_page.location_address', [], $locale),
+                'cta' => __('site.about_page.location_cta', [], $locale),
             ],
         ];
     }
