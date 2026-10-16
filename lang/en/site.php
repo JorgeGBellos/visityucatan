@@ -637,10 +637,6 @@ return [
                 'description' => 'Discounts at State Government venues for hosting events.',
             ],
             [
-                'title' => 'Institutional liaison',
-                'description' => 'Coordination with State Government agencies to facilitate event operations.',
-            ],
-            [
                 'title' => 'Cultural performances management',
                 'description' => 'Access and coordination of cultural performances from the Yucatán Ministry of Culture catalog.',
             ],
@@ -651,6 +647,10 @@ return [
             [
                 'title' => 'Tourism value chain connection',
                 'description' => 'Advisory and connection with local suppliers, experiences, and tourism services for your event.',
+            ],
+            [
+                'title' => 'Institutional liaison',
+                'description' => 'Coordination with State Government agencies to facilitate event operations.',
             ],
         ],
     ],

@@ -39,7 +39,8 @@
         ];
     };
 
-    $destinoStats = collect(__('site.home.destino_stats'))
+    $destinoTitle = $homeCms->text('destino.title', 'site.home.destino_stats_title');
+    $destinoStats = collect($homeCms->list('destino.stats', __('site.home.destino_stats')))
         ->values()
         ->map(function (array $item, int $index) use ($destinoIcons, $parseDestinoValue) {
             $value = $item['value'] ?? '';
@@ -105,12 +106,20 @@
         'images/home/patrocinio/vinculacion-turistica.png',
         'images/home/patrocinio/vinculacion-institucional.png',
     ];
-    $patrocinioItems = collect(__('site.home.patrocinio_items'))
+    $patrocinioSource = $homeCms->list('patrocinio.items');
+    if ($patrocinioSource === []) {
+        $patrocinioSource = __('site.home.patrocinio_items');
+    }
+    $patrocinioItems = collect($patrocinioSource)
         ->values()
-        ->map(fn (string $label, int $index) => [
-            'label' => $label,
-            'icon' => $patrocinioIcons[$index] ?? $patrocinioIcons[0],
-        ])
+        ->map(function (mixed $item, int $index) use ($patrocinioIcons) {
+            $label = is_array($item) ? (string) ($item['label'] ?? '') : (string) $item;
+
+            return [
+                'label' => $label,
+                'icon' => $patrocinioIcons[$index] ?? $patrocinioIcons[0],
+            ];
+        })
         ->all();
 
     $distritosTitle = $homeCms->text('distritos.title', 'site.home.distritos_title');
@@ -199,7 +208,7 @@
         >
             <div class="mx-auto max-w-site px-6 lg:px-10">
                 <h2 id="home-destino-title" class="text-center font-display text-b1 text-black-900 md:text-s2">
-                    {{ __('site.home.destino_stats_title') }}
+                    {{ $destinoTitle }}
                 </h2>
 
                 <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:mt-14 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-12">

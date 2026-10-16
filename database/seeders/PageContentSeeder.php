@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Filament\Pages\ManageAboutPage;
+use App\Filament\Pages\ManageApoyosPage;
 use App\Filament\Pages\ManageAlliesPage;
 use App\Filament\Pages\ManageBlogPage;
 use App\Filament\Pages\ManageDistritoCicPage;
@@ -26,6 +27,7 @@ class PageContentSeeder extends Seeder
         ManageHomePage::class,
         ManageAboutPage::class,
         ManageWhyPage::class,
+        ManageApoyosPage::class,
         ManageFideturePage::class,
         ManageAlliesPage::class,
         ManageDistrictsPage::class,

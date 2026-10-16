@@ -45,17 +45,19 @@ class ManageHomePage extends ManagePageContent
                         ->helperText('Puedes usar saltos de línea.'),
                 ]),
 
-            Section::make('Cifras')
+            Section::make('Destino')
                 ->collapsed()
+                ->description('Banda de cifras bajo el hero. Los iconos son fijos.')
                 ->schema([
-                    Repeater::make("content.{$locale}.stats")
-                        ->label('Estadísticas')
+                    TextInput::make("content.{$locale}.destino.title")->label('Título')->maxLength(255),
+                    Repeater::make("content.{$locale}.destino.stats")
+                        ->label('Cifras')
                         ->schema([
-                            TextInput::make('line_1')->label('Valor')->required(),
-                            TextInput::make('line_2')->label('Etiqueta'),
+                            TextInput::make('value')->label('Número')->required(),
+                            TextInput::make('label')->label('Etiqueta')->required(),
                         ])
-                        ->maxItems(4)
-                        ->minItems(1)
+                        ->maxItems(10)
+                        ->minItems(10)
                         ->reorderable(false)
                         ->addable(false)
                         ->deletable(false)
@@ -95,6 +97,17 @@ class ManageHomePage extends ManagePageContent
                     TextInput::make("content.{$locale}.patrocinio.title")->label('Título')->maxLength(255),
                     Textarea::make("content.{$locale}.patrocinio.text")->label('Texto')->rows(3),
                     TextInput::make("content.{$locale}.patrocinio.cta")->label('CTA')->maxLength(120),
+                    Repeater::make("content.{$locale}.patrocinio.items")
+                        ->label('Apoyos')
+                        ->helperText('Los iconos son los del diseño actual.')
+                        ->schema([
+                            TextInput::make('label')->label('Etiqueta')->required()->maxLength(120),
+                        ])
+                        ->maxItems(6)
+                        ->minItems(6)
+                        ->reorderable(false)
+                        ->addable(false)
+                        ->deletable(false),
                 ]),
 
             Section::make('Distritos')
@@ -145,13 +158,16 @@ class ManageHomePage extends ManagePageContent
             'hero' => [
                 'title' => __('site.home.hero_title', [], $locale),
             ],
-            'stats' => collect(__('site.home.stats', [], $locale))
-                ->map(fn (array $item) => [
-                    'line_1' => $item['value'] ?? '',
-                    'line_2' => $item['label'] ?? '',
-                ])
-                ->values()
-                ->all(),
+            'destino' => [
+                'title' => __('site.home.destino_stats_title', [], $locale),
+                'stats' => collect(__('site.home.destino_stats', [], $locale))
+                    ->map(fn (array $item) => [
+                        'value' => $item['value'] ?? '',
+                        'label' => $item['label'] ?? '',
+                    ])
+                    ->values()
+                    ->all(),
+            ],
             'about' => [
                 'text' => __('site.home.about_text', [], $locale),
                 'text_2' => __('site.home.about_text_2', [], $locale),
@@ -178,6 +194,10 @@ class ManageHomePage extends ManagePageContent
                 'title' => __('site.home.patrocinio_title', [], $locale),
                 'text' => __('site.home.patrocinio_text', [], $locale),
                 'cta' => __('site.home.patrocinio_cta', [], $locale),
+                'items' => collect(__('site.home.patrocinio_items', [], $locale))
+                    ->map(fn (string $label) => ['label' => $label])
+                    ->values()
+                    ->all(),
             ],
             'distritos' => [
                 'title' => __('site.home.distritos_title', [], $locale),

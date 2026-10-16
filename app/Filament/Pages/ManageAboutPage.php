@@ -29,7 +29,7 @@ class ManageAboutPage extends ManagePageContent
 
     protected function cmsHelperText(): string
     {
-        return 'Activa para que /nosotros use el hero, la sección Visit, el equipo y el bloque Fideture de este panel.';
+        return 'Activa para que /nosotros use el hero, la sección Visit y el equipo de este panel.';
     }
 
     protected function localeFields(string $locale): array
@@ -71,14 +71,6 @@ class ManageAboutPage extends ManagePageContent
                         ->reorderable()
                         ->defaultItems(0),
                 ]),
-
-            Section::make('Fideture')
-                ->collapsed()
-                ->schema([
-                    TextInput::make("content.{$locale}.fideture.title")->label('Título')->maxLength(255),
-                    Textarea::make("content.{$locale}.fideture.text")->label('Texto')->rows(4),
-                    TextInput::make("content.{$locale}.fideture.cta")->label('CTA')->maxLength(120),
-                ]),
         ];
     }
 
@@ -116,11 +108,6 @@ class ManageAboutPage extends ManagePageContent
                         'image' => $member['image'] ?? null,
                     ])
                     ->all(),
-            ],
-            'fideture' => [
-                'title' => __('site.home.fideture_title', [], $locale),
-                'text' => __('site.home.fideture_text', [], $locale),
-                'cta' => __('site.home.fideture_cta', [], $locale),
             ],
         ];
     }

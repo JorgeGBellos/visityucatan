@@ -30,7 +30,7 @@ class ManageWhyPage extends ManagePageContent
 
     protected function cmsHelperText(): string
     {
-        return 'Activa para que /por-que-yucatan use los textos de este panel. Los logos de aliados salen del CRUD Aliados.';
+        return 'Activa para que /por-que-yucatan use los textos de este panel.';
     }
 
     protected function localeFields(string $locale): array
@@ -135,15 +135,6 @@ class ManageWhyPage extends ManagePageContent
                     TextInput::make("content.{$locale}.cultura.cta")->label('CTA')->maxLength(120),
                 ]),
 
-            Section::make('Hospitalidad / Aliados')
-                ->collapsed()
-                ->description('El listado de logos viene del CRUD Aliados.')
-                ->schema([
-                    TextInput::make("content.{$locale}.aliados.title")->label('Título')->maxLength(255),
-                    Textarea::make("content.{$locale}.aliados.text")->label('Texto')->rows(3),
-                    TextInput::make("content.{$locale}.aliados.cta")->label('CTA')->maxLength(120),
-                ]),
-
             Section::make('Banner del footer')
                 ->collapsed()
                 ->schema([
@@ -233,11 +224,6 @@ class ManageWhyPage extends ManagePageContent
                 'text' => __('site.why_page.cultura_text', [], $locale),
                 'text_2' => __('site.why_page.cultura_text_2', [], $locale),
                 'cta' => __('site.why_page.cultura_cta', [], $locale),
-            ],
-            'aliados' => [
-                'title' => __('site.why_page.aliados_title', [], $locale),
-                'text' => __('site.why_page.aliados_text', [], $locale),
-                'cta' => __('site.why_page.aliados_cta', [], $locale),
             ],
             'footer' => [
                 'title' => __('site.why_page.footer_hero_title', [], $locale),

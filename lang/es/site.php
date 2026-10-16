@@ -637,10 +637,6 @@ return [
                 'description' => 'Descuentos en recintos propiedad del Gobierno del Estado para la realización de eventos.',
             ],
             [
-                'title' => 'Vinculación Institucional',
-                'description' => 'Gestión de enlaces con dependencias del Gobierno del Estado para facilitar la operación del evento.',
-            ],
-            [
                 'title' => 'Gestión de espectáculos culturales',
                 'description' => 'Acceso y coordinación de espectáculos culturales del catálogo de la Secretaría de Cultura de Yucatán.',
             ],
@@ -651,6 +647,10 @@ return [
             [
                 'title' => 'Vinculación con la cadena de valor turística',
                 'description' => 'Asesoría y conexión con proveedores locales, experiencias y servicios turísticos para su evento.',
+            ],
+            [
+                'title' => 'Vinculación Institucional',
+                'description' => 'Gestión de enlaces con dependencias del Gobierno del Estado para facilitar la operación del evento.',
             ],
         ],
     ],
