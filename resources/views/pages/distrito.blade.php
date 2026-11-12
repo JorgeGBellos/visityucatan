@@ -111,37 +111,49 @@
 
         <section class="bg-beige-500 py-14 lg:py-20" aria-labelledby="distrito-intro-title">
             <div class="mx-auto flex w-full max-w-site flex-col px-6 lg:px-10">
-                <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-                    <img
-                        src="{{ asset('images/svg/casita.svg') }}"
-                        alt=""
-                        class="h-[52px] w-auto lg:h-[60px]"
-                        height="60"
-                        aria-hidden="true"
-                    >
+                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(16rem,0.7fr)] lg:gap-14">
+                    <div class="h-[320px] overflow-hidden bg-beige-300 sm:h-[420px] lg:h-[520px]">
+                        <iframe
+                            title="{{ $mapTitle }}"
+                            class="h-full w-full border-0"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="{{ $mapEmbed }}"
+                        ></iframe>
+                    </div>
 
-                    <h2
-                        id="distrito-intro-title"
-                        class="mt-8 text-s1 text-black-900 lg:mt-10"
-                    >
-                        {{ $introHeadline }}
-                    </h2>
+                    <div class="mx-auto flex max-w-md flex-col items-center text-center">
+                        <img
+                            src="{{ asset('images/svg/casita.svg') }}"
+                            alt=""
+                            class="h-[52px] w-auto lg:h-[60px]"
+                            height="60"
+                            aria-hidden="true"
+                        >
 
-                    <p class="mt-5 max-w-2xl text-b2 font-book text-black-900 lg:mt-6">
-                        {{ $introTextBefore }}<strong class="font-bold">{{ $introTextBold }}</strong>{{ $introTextAfter }}
-                    </p>
+                        <h2
+                            id="distrito-intro-title"
+                            class="mt-8 text-s1 text-black-900 lg:mt-10"
+                        >
+                            {{ $introHeadline }}
+                        </h2>
 
-                    <a
-                        href="{{ $ctaUrl }}"
-                        class="btn btn-sm btn-primary mt-8 inline-flex items-center gap-2 lg:mt-10"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span>{{ $cta }}</span>
-                        <svg class="size-3.5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
+                        <p class="mt-5 text-b2 font-book text-black-900 lg:mt-6">
+                            {{ $introTextBefore }}<strong class="font-bold">{{ $introTextBold }}</strong>{{ $introTextAfter }}
+                        </p>
+
+                        <a
+                            href="{{ $ctaUrl }}"
+                            class="btn btn-sm btn-primary mt-8 inline-flex items-center gap-2 lg:mt-10"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span>{{ $cta }}</span>
+                            <svg class="size-3.5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="mt-14 border-y-2 border-black-900 lg:mt-20">

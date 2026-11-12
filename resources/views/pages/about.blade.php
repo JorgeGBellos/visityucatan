@@ -275,11 +275,11 @@
         <section class="bg-beige-500 py-16 lg:py-24" aria-labelledby="about-location-title">
             <div class="mx-auto grid max-w-site items-center gap-10 px-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(16rem,0.7fr)] lg:gap-16 lg:px-10">
                 <img
-                    src="{{ asset('images/usmap.svg') }}"
+                    src="{{ asset('images/about/cic.png') }}"
                     alt="{{ __('site.about_page.location_map_alt') }}"
-                    class="h-auto w-full"
-                    width="1001"
-                    height="593"
+                    class="h-auto w-full rounded-lg object-cover"
+                    width="1200"
+                    height="675"
                 >
 
                 <div class="max-w-sm lg:justify-self-end">
@@ -303,6 +303,22 @@
                         {{ $locationCta }}
                     </x-button>
                 </div>
+            </div>
+        </section>
+
+        <section class="bg-beige-300 py-16 lg:py-24" aria-labelledby="about-clients-title">
+            <div class="mx-auto max-w-site px-6 lg:px-10">
+                <h2 id="about-clients-title" class="text-center text-s1 text-black-900">
+                    {{ __('site.about_page.clients_title') }}
+                </h2>
+
+                <img
+                    src="{{ asset('images/svg/clientes.svg') }}"
+                    alt="{{ __('site.about_page.clients_image_alt') }}"
+                    class="mx-auto mt-10 h-auto w-full lg:mt-14"
+                    width="1520"
+                    height="552"
+                >
             </div>
         </section>
 

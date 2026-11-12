@@ -13,6 +13,7 @@ class DistrictPlace extends Model
     public const CATEGORIES = [
         'hotels',
         'venues',
+        'restaurants',
     ];
 
     protected $fillable = [

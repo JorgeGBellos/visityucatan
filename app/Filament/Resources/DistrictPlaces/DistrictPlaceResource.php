@@ -58,6 +58,7 @@ class DistrictPlaceResource extends Resource
         return [
             'hotels' => 'Haciendas',
             'venues' => 'Venues',
+            'restaurants' => 'Restaurantes',
         ];
     }
 

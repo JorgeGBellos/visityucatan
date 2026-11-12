@@ -20,12 +20,12 @@
         $programText = $apoyosCms->text('program.text', 'site.apoyos_page.program_text');
 
         $cardMedia = [
-            ['image' => 'images/apoyos/apoyo-1.png', 'icon' => 'images/home/patrocinio/apoyo-economico.png', 'tone' => 'bg-green-100'],
-            ['image' => 'images/apoyos/apoyo-2.png', 'icon' => 'images/home/patrocinio/descuentos-recintos.png', 'tone' => 'bg-blue-100'],
-            ['image' => 'images/apoyos/apoyo-6.png', 'icon' => 'images/home/patrocinio/espectaculos.png', 'tone' => 'bg-orange-100'],
-            ['image' => 'images/apoyos/apoyo-5.png', 'icon' => 'images/home/patrocinio/aerolineas.png', 'tone' => 'bg-orange-100'],
-            ['image' => 'images/apoyos/apoyo-4.png', 'icon' => 'images/home/patrocinio/vinculacion-turistica.png', 'tone' => 'bg-green-100'],
-            ['image' => 'images/apoyos/apoyo-3.png', 'icon' => 'images/home/patrocinio/vinculacion-institucional.png', 'tone' => 'bg-blue-100'],
+            ['image' => 'images/apoyos/apoyo-1.png', 'icon' => 'images/home/patrocinio/icon-apoyo.png'],
+            ['image' => 'images/apoyos/apoyo-2.png', 'icon' => 'images/home/patrocinio/icon-recintos.png'],
+            ['image' => 'images/apoyos/apoyo-6.png', 'icon' => 'images/home/patrocinio/icon-espectaculos.png'],
+            ['image' => 'images/apoyos/apoyo-5.png', 'icon' => 'images/home/patrocinio/icon-aerolineas.png'],
+            ['image' => 'images/apoyos/apoyo-4.png', 'icon' => 'images/home/patrocinio/icon-cadena.png'],
+            ['image' => 'images/home/section4/images/card-4.png', 'icon' => 'images/home/patrocinio/icon-institucional.png'],
         ];
 
         $supportCards = collect($apoyosCms->list('items', __('site.apoyos_page.items')))
@@ -85,7 +85,7 @@
 
                 <ul class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
                     @foreach ($supportCards as $card)
-                        <li class="flex flex-col overflow-hidden rounded-2xl {{ $card['tone'] }} text-center text-black-900">
+                        <li class="flex flex-col overflow-hidden rounded-2xl bg-beige-500 text-center text-black-900">
                             <div class="flex flex-1 flex-col px-5 pt-8 sm:px-6 sm:pt-10">
                                 <img
                                     src="{{ asset($card['icon']) }}"
@@ -109,7 +109,7 @@
                                 <img
                                     src="{{ asset($card['image']) }}"
                                     alt=""
-                                    class="aspect-[4/3] w-full rounded-xl object-cover"
+                                    class="h-[260px] w-full rounded-xl object-cover"
                                 >
                             </div>
                         </li>

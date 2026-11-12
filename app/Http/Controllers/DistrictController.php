@@ -18,6 +18,7 @@ class DistrictController extends Controller
         $tabLabels = [
             'hotels' => __('site.distrito_directory.tabs.hotels'),
             'venues' => __('site.distrito_directory.tabs.venues'),
+            'restaurants' => __('site.distrito_directory.tabs.restaurants'),
         ];
 
         $spaces = DistrictPlace::query()
@@ -29,10 +30,11 @@ class DistrictController extends Controller
             ->values()
             ->all();
 
-        $presentCategories = collect($spaces)->pluck('category')->unique()->filter()->all();
-        $tabs = collect($tabLabels)
-            ->only($presentCategories !== [] ? $presentCategories : array_keys($tabLabels))
-            ->all();
+        $tabs = $tabLabels;
+
+        $mapQuery = $district->slug === 'siglo-xxi'
+            ? 'Centro de Convenciones Yucatán Siglo XXI, Mérida, Yucatán'
+            : 'Centro Internacional de Congresos Yucatán, Mérida, Yucatán';
 
         return view('pages.distrito', [
             'district' => $district,
@@ -53,6 +55,10 @@ class DistrictController extends Controller
             },
             'tabs' => $tabs,
             'spaces' => $spaces,
+            'mapEmbed' => 'https://maps.google.com/maps?q='.rawurlencode($mapQuery).'&z=14&hl=es&output=embed',
+            'mapTitle' => $district->slug === 'siglo-xxi'
+                ? __('site.distrito_directory.map_norte')
+                : __('site.distrito_directory.map_centro'),
         ]);
     }
 }

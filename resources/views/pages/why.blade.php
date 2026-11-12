@@ -47,6 +47,16 @@
             ? $whyCms->list('air.cities_right')
             : __('site.why_page.air_cities_right');
 
+        $airlines = [
+            ['src' => 'images/pqyucatan/airlines/volaris.png', 'alt' => 'Volaris'],
+            ['src' => 'images/pqyucatan/airlines/westjet.png', 'alt' => 'WestJet'],
+            ['src' => 'images/pqyucatan/airlines/mexicana.png', 'alt' => 'Mexicana'],
+            ['src' => 'images/pqyucatan/airlines/american.png', 'alt' => 'American Airlines'],
+            ['src' => 'images/pqyucatan/airlines/united.png', 'alt' => 'United'],
+            ['src' => 'images/pqyucatan/airlines/viva.png', 'alt' => 'Viva'],
+            ['src' => 'images/pqyucatan/airlines/magni.png', 'alt' => 'Magni Charters'],
+        ];
+
         $venues = collect(__('site.why_page.venues'))
             ->values()
             ->map(function (array $item, int $index) {
@@ -180,12 +190,12 @@
         {{-- 2. Conectividad aérea --}}
         <section class="bg-beige-500 py-16 lg:py-24" aria-labelledby="why-air-title">
             <div class="mx-auto max-w-site px-6 lg:px-10">
-                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,0.3fr)] lg:gap-12">
-                    <div class="overflow-hidden">
+                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(16rem,0.75fr)] lg:gap-14">
+                    <div class="overflow-hidden rounded-lg">
                         <img
-                            src="{{ asset('images/pqyucatan/Frame 132.png') }}"
+                            src="{{ asset('images/pqyucatan/conectividad-aerea.png') }}"
                             alt="{{ __('site.why_page.air_map_alt') }}"
-                            class="h-auto w-full object-contain"
+                            class="h-auto w-full object-cover"
                         >
                     </div>
 
@@ -216,6 +226,18 @@
                         </div>
                     </div>
                 </div>
+
+                <ul class="mt-12 flex flex-wrap items-center justify-between gap-x-8 gap-y-6 lg:mt-16">
+                    @foreach ($airlines as $airline)
+                        <li class="flex h-8 shrink-0 items-center sm:h-10">
+                            <img
+                                src="{{ asset($airline['src']) }}"
+                                alt="{{ $airline['alt'] }}"
+                                class="h-8 w-auto max-w-none object-contain sm:h-10"
+                            >
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </section>
 
@@ -224,6 +246,15 @@
             <div class="mx-auto max-w-site px-6 lg:px-10">
                 <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.3fr)_minmax(0,0.7fr)] lg:gap-12">
                     <div class="text-left text-black-900">
+                        <img
+                            src="{{ asset('images/pqyucatan/Gifo (1).svg') }}"
+                            alt=""
+                            class="mb-4 h-10 w-auto"
+                            width="40"
+                            height="40"
+                            aria-hidden="true"
+                        >
+
                         <p class="text-btn3 font-book uppercase tracking-[0.04em] text-black-900">
                             {{ $landEyebrow }}
                         </p>
@@ -239,21 +270,13 @@
                         <p class="mt-3 text-b2 font-book text-black-900">
                             {{ $landText2 }}
                         </p>
-
-                        <img
-                            src="{{ asset('images/pqyucatan/Gifo (1).svg') }}"
-                            alt=""
-                            class="mt-8 h-14 w-auto lg:mt-10 lg:h-16"
-                            height="64"
-                            aria-hidden="true"
-                        >
                     </div>
 
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden rounded-lg">
                         <img
-                            src="{{ asset('images/pqyucatan/Rectangle 3 (3).png') }}"
+                            src="{{ asset('images/pqyucatan/conectividad-terrestre.png') }}"
                             alt="{{ __('site.why_page.land_map_alt') }}"
-                            class="h-auto w-full object-contain"
+                            class="h-auto w-full object-cover"
                         >
                     </div>
                 </div>
@@ -283,7 +306,7 @@
                             <img
                                 src="{{ asset($attraction['image']) }}"
                                 alt="{{ $attraction['name'] }}"
-                                class="aspect-[4/3] w-full object-cover"
+                                class="h-[260px] w-full object-cover"
                             >
                             <div class="relative flex min-h-[72px] items-center px-4 py-4 pr-12">
                                 <p class="text-b1 font-bold text-black-900">

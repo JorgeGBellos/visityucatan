@@ -99,12 +99,12 @@
     $patrocinioText = $homeCms->text('patrocinio.text', 'site.home.patrocinio_text');
     $patrocinioCta = $homeCms->text('patrocinio.cta', 'site.home.patrocinio_cta');
     $patrocinioIcons = [
-        'images/home/patrocinio/apoyo-economico.png',
-        'images/home/patrocinio/descuentos-recintos.png',
-        'images/home/patrocinio/espectaculos.png',
-        'images/home/patrocinio/aerolineas.png',
-        'images/home/patrocinio/vinculacion-turistica.png',
-        'images/home/patrocinio/vinculacion-institucional.png',
+        'images/home/patrocinio/icon-apoyo.png',
+        'images/home/patrocinio/icon-recintos.png',
+        'images/home/patrocinio/icon-espectaculos.png',
+        'images/home/patrocinio/icon-cadena.png',
+        'images/home/patrocinio/icon-institucional.png',
+        'images/home/patrocinio/icon-aerolineas.png',
     ];
     $patrocinioSource = $homeCms->list('patrocinio.items');
     if ($patrocinioSource === []) {
@@ -137,7 +137,20 @@
         ->all();
 
     $mediosTitle = $homeCms->text('medios.title', 'site.home.medios_title');
-    $mediosImage = 'images/home/presencia.svg';
+    $mediosLogos = [
+        ['src' => 'images/home/medios/el-economista.png', 'alt' => 'El Economista'],
+        ['src' => 'images/home/medios/eventos-latinoamericanos.png', 'alt' => 'Eventos Latinoamericanos'],
+        ['src' => 'images/home/medios/forbes.png', 'alt' => 'Forbes'],
+        ['src' => 'images/home/medios/notiexpos.png', 'alt' => 'Notiexpos'],
+        ['src' => 'images/home/medios/travel-leisure.png', 'alt' => 'Travel + Leisure'],
+        ['src' => 'images/home/medios/pasillo-turistico.png', 'alt' => 'Pasillo Turístico'],
+        ['src' => 'images/home/medios/sdp-noticias.png', 'alt' => 'SDP Noticias'],
+        ['src' => 'images/home/medios/travel2latam.png', 'alt' => 'Travel2latam'],
+        ['src' => 'images/home/medios/el-heraldo.png', 'alt' => 'El Heraldo de México'],
+        ['src' => 'images/home/medios/meetings-conventions.png', 'alt' => 'Meetings and Conventions'],
+        ['src' => 'images/home/medios/mdc.png', 'alt' => 'MDC'],
+        ['src' => 'images/home/medios/factor-meetings.png', 'alt' => 'Factor Meetings'],
+    ];
 
     $fidetureTitle = $homeCms->text('fideture.title', 'site.home.fideture_title');
     $fidetureText = $homeCms->text('fideture.text', 'site.home.fideture_text');
@@ -202,60 +215,19 @@
                 </div>
             </section>
 
-        <section
-            class="bg-green-100 py-12 md:py-16 lg:py-20"
-            aria-labelledby="home-destino-title"
-        >
-            <div class="mx-auto max-w-site px-6 lg:px-10">
-                <h2 id="home-destino-title" class="text-center font-display text-b1 text-black-900 md:text-s2">
-                    {{ $destinoTitle }}
-                </h2>
-
-                <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:mt-14 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-12">
-                    @foreach ($destinoStats as $stat)
-                        <li class="flex flex-col items-center px-2 text-center">
-                            <img
-                                src="{{ asset($stat['icon']) }}"
-                                alt=""
-                                class="size-8 object-contain"
-                                width="32"
-                                height="32"
-                                aria-hidden="true"
-                            >
-                            @if ($stat['animated'])
-                                <p
-                                    class="mt-3 font-display text-s1 leading-none text-green-700"
-                                    x-data="statCounter({{ $stat['count'] }}, @js($stat['prefix']), @js($stat['suffix']), 0, {{ $stat['grouped'] ? 'true' : 'false' }})"
-                                    x-text="display"
-                                >{{ $stat['value'] }}</p>
-                            @else
-                                <p class="mt-3 font-display text-s1 leading-none text-green-700">
-                                    {{ $stat['value'] }}
-                                </p>
-                            @endif
-                            <p class="mt-2 max-w-[12rem] text-[0.7rem] font-book uppercase leading-tight tracking-[0.06em] text-black-900">
-                                {{ $stat['label'] }}
-                            </p>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-
         <section class="bg-beige-500 pt-12 pb-16 md:pt-20 md:pb-20 lg:pt-30 lg:pb-24" aria-labelledby="about-title">
             <div class="mx-auto max-w-site px-6 lg:px-10">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-10">
-                    {{-- Columna izquierda (solo desktop) --}}
                     <div class="hidden justify-self-start lg:block" aria-hidden="true">
                         <img
-                            src="{{ asset('images/services/Frame 133.svg') }}"
+                            src="{{ asset('images/svg/amarillo (2).svg') }}"
                             alt=""
-                            class="h-[320px] w-auto max-w-full object-contain object-left"
-                            height="320"
+                            class="h-[340px] w-auto max-w-full object-contain object-left"
+                            width="452"
+                            height="452"
                         >
                     </div>
 
-                    {{-- Columna central --}}
                     <div class="flex h-full flex-col items-center justify-center px-2 text-center text-black-900">
                         <img
                             src="{{ asset('images/logotipos/visit-vertical.svg') }}"
@@ -278,22 +250,52 @@
                         </p>
 
                         <div class="mt-6">
-                            <x-button variant="tertiary" class="border-black-900" href="{{ route('pages.about') }}">
+                            <x-button variant="secondary" size="sm" href="{{ route('pages.about') }}">
                                 {{ $aboutCta }}
                             </x-button>
                         </div>
                     </div>
 
-                    {{-- Columna derecha (solo desktop) --}}
                     <div class="hidden justify-self-end lg:block" aria-hidden="true">
                         <img
-                            src="{{ asset('images/services/Frame 134.svg') }}"
+                            src="{{ asset('images/svg/amarillo (1).svg') }}"
                             alt=""
-                            class="h-[320px] w-auto max-w-full object-contain object-right"
-                            height="320"
+                            class="h-[340px] w-auto max-w-full object-contain object-right"
+                            width="447"
+                            height="446"
                         >
                     </div>
                 </div>
+
+                <h2 id="home-destino-title" class="sr-only">
+                    {{ $destinoTitle }}
+                </h2>
+
+                <ul class="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:mt-20 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-12" aria-labelledby="home-destino-title">
+                    @foreach ($destinoStats as $stat)
+                        <li class="flex flex-col items-center px-2 text-center">
+                            <span
+                                class="size-8 bg-yellow-500 [mask-image:var(--stat-icon)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:var(--stat-icon)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+                                style="--stat-icon: url('{{ asset($stat['icon']) }}')"
+                                aria-hidden="true"
+                            ></span>
+                            @if ($stat['animated'])
+                                <p
+                                    class="mt-3 font-display text-s1 leading-none text-black-900"
+                                    x-data="statCounter({{ $stat['count'] }}, @js($stat['prefix']), @js($stat['suffix']), 0, {{ $stat['grouped'] ? 'true' : 'false' }})"
+                                    x-text="display"
+                                >{{ $stat['value'] }}</p>
+                            @else
+                                <p class="mt-3 font-display text-s1 leading-none text-black-900">
+                                    {{ $stat['value'] }}
+                                </p>
+                            @endif
+                            <p class="mt-2 max-w-[12rem] text-[0.7rem] font-book uppercase leading-tight tracking-[0.06em] text-black-900">
+                                {{ $stat['label'] }}
+                            </p>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </section>
 
@@ -315,7 +317,7 @@
                             <img
                                 src="{{ cms_asset($card['image']) }}"
                                 alt=""
-                                class="aspect-[3/2] w-full object-cover"
+                                class="h-[260px] w-full object-cover"
                             >
                             <div class="flex items-start justify-between gap-3 px-4 pt-3 pb-4">
                                 <div class="min-w-0 flex-1">
@@ -352,11 +354,11 @@
 
                 <ul class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:mt-12 lg:grid-cols-6 lg:gap-5">
                     @foreach ($patrocinioItems as $item)
-                        <li class="flex flex-col items-center rounded-lg bg-beige-100 px-3 py-5 text-center sm:px-4 sm:py-6">
+                        <li class="flex flex-col items-center rounded-lg bg-beige-100 px-3 py-5 text-center transition-colors duration-150 hover:bg-green-100 sm:px-4 sm:py-6">
                             <img
                                 src="{{ asset($item['icon']) }}"
                                 alt=""
-                                class="size-[60px] shrink-0 object-contain"
+                                class="size-10 shrink-0 object-contain"
                                 width="60"
                                 height="60"
                                 aria-hidden="true"
@@ -487,62 +489,6 @@
             </div>
         </section>
 
-        {{-- Ubicación de distritos --}}
-        <section class="bg-beige-100 py-16 lg:py-24" aria-labelledby="distritos-ubicacion-title">
-            <div class="mx-auto max-w-site px-6 lg:px-10">
-                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[7fr_3fr] lg:gap-12">
-                    <div class="overflow-hidden rounded-lg bg-beige-100">
-                        <video
-                            class="aspect-[4/3] h-full w-full object-cover lg:aspect-[5/4]"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            aria-hidden="true"
-                        >
-                            <source src="{{ asset('videos/distritos-bloop.mp4') }}" type="video/mp4">
-                            <source src="{{ asset('videos/Bloop distritos (1).mp4') }}" type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div class="flex flex-col text-black-900">
-                        <h2 id="distritos-ubicacion-title" class="text-s1">
-                            {{ __('site.home.distritos_ubicacion_title') }}
-                        </h2>
-
-                        <p class="mt-3 text-b2 font-book text-black-900">
-                            {{ __('site.home.distritos_ubicacion_text') }}
-                        </p>
-
-                        <div class="mt-8">
-                            <x-button
-                                variant="tertiary"
-                                class="border-black-900"
-                                href="{{ route('pages.districts') }}"
-                            >
-                                {{ __('site.home.distritos_ubicacion_cta') }}
-                            </x-button>
-                        </div>
-
-                        <div
-                            class="mt-8 aspect-[4/3] overflow-hidden rounded-lg bg-black-100 sm:aspect-[16/10] lg:mt-10"
-                            role="img"
-                            aria-label="{{ __('site.home.distritos_ubicacion_map') }}"
-                        >
-                            <iframe
-                                title="{{ __('site.home.distritos_ubicacion_map') }}"
-                                class="h-full w-full border-0"
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119066.313542!2d-89.72!3d20.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56715a5d6871f3%3A0xfce4fc80ecd26a0!2sM%C3%A9rida%2C%20Yuc.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         @include('partials.aliados-carousel', [
             'aliados' => $aliados,
             'title' => $aliadosTitle,
@@ -551,34 +497,42 @@
             'sectionBg' => 'bg-beige-300',
         ])
 
-        <section class="bg-beige-500 py-16 lg:py-24" aria-labelledby="medios-title">
-            <div class="mx-auto max-w-site px-6 lg:px-10">
-                <h2 id="medios-title" class="text-center text-s1 text-black-900">
-                    {{ $mediosTitle }}
-                </h2>
-
-                <div class="mt-10 lg:mt-14">
-                    <img
-                        src="{{ asset($mediosImage) }}"
-                        alt="{{ $mediosTitle }}"
-                        class="mx-auto h-auto w-full max-w-[1542px] object-contain grayscale"
-                        width="1542"
-                        height="341"
-                        loading="lazy"
-                    >
-                </div>
-            </div>
-        </section>
-
         @include('partials.fideture-block', [
             'title' => $fidetureTitle,
             'text' => $fidetureText,
             'cta' => $fidetureCta,
             'ctaHref' => route('pages.fideture'),
-            'sectionClass' => 'py-16 lg:py-24',
+            'sectionClass' => 'pt-16 pb-8 lg:pt-24 lg:pb-12',
             'backgroundImage' => 'images/home/Frame 106.png',
             'useRichText' => true,
         ])
+
+        <section class="overflow-hidden bg-beige-500 pt-6 pb-16 lg:pt-8 lg:pb-24" aria-labelledby="medios-title">
+            <div class="mx-auto max-w-site px-6 lg:px-10">
+                <h2 id="medios-title" class="text-center text-s1 text-black-900">
+                    {{ $mediosTitle }}
+                </h2>
+            </div>
+
+            <div class="mt-10 overflow-hidden lg:mt-14">
+                <div class="flex w-max animate-cintilla-reverse will-change-transform">
+                    @foreach ([false, true] as $duplicate)
+                        <ul class="flex shrink-0 items-center gap-14 pr-14 md:gap-20 md:pr-20" @if ($duplicate) aria-hidden="true" @endif>
+                            @foreach ($mediosLogos as $logo)
+                                <li class="flex h-24 shrink-0 items-center">
+                                    <img
+                                        src="{{ asset($logo['src']) }}"
+                                        alt="{{ $duplicate ? '' : $logo['alt'] }}"
+                                        class="h-24 w-auto max-w-none object-contain brightness-0"
+                                        loading="lazy"
+                                    >
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endforeach
+                </div>
+            </div>
+        </section>
     </main>
 @endsection
 
