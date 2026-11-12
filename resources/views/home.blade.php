@@ -521,10 +521,11 @@
                             @foreach ($mediosLogos as $logo)
                                 <li class="flex h-24 shrink-0 items-center">
                                     <img
-                                        src="{{ asset($logo['src']) }}"
+                                        src="{{ asset($logo['src']) }}?v=2"
                                         alt="{{ $duplicate ? '' : $logo['alt'] }}"
                                         class="h-24 w-auto max-w-none object-contain brightness-0"
-                                        loading="lazy"
+                                        width="185"
+                                        height="98"
                                     >
                                 </li>
                             @endforeach
