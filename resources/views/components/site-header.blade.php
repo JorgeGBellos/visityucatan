@@ -84,9 +84,33 @@
     <div
         class="relative z-50 h-[90px] border-b-2 border-black-900 bg-beige-500"
     >
-        {{-- Móvil: logo izq · idioma + menú der --}}
-        <div class="mx-auto flex h-full max-w-site items-center justify-between gap-4 px-6 xl:hidden">
-            <a href="{{ route('home') }}" aria-label="{{ config('app.name') }}" @click="close()">
+        {{-- Móvil: idioma izq · logo centro · menú der --}}
+        <div class="mx-auto grid h-full max-w-site grid-cols-[2.5rem_1fr_2.5rem] items-center px-6 xl:hidden">
+            <button
+                type="button"
+                class="inline-flex size-10 items-center justify-center justify-self-start text-black-900 transition-opacity hover:opacity-70"
+                aria-label="{{ __('site.nav.change_language') }}"
+                aria-haspopup="dialog"
+                :aria-expanded="langOpen.toString()"
+                aria-controls="language-sheet"
+                @click="langOpen ? (langOpen = false) : openLangSheet()"
+            >
+                <img
+                    src="{{ asset('images/svg/world.svg') }}"
+                    alt=""
+                    class="size-6"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                >
+            </button>
+
+            <a
+                href="{{ route('home') }}"
+                class="justify-self-center"
+                aria-label="{{ config('app.name') }}"
+                @click="close()"
+            >
                 <img
                     src="{{ asset('images/logotipos/visit-vertical.svg') }}"
                     alt="{{ config('app.name') }}"
@@ -96,42 +120,21 @@
                 >
             </a>
 
-            <div class="flex items-center gap-4">
-                <button
-                    type="button"
-                    class="inline-flex size-6 items-center justify-center text-black-900 transition-opacity hover:opacity-70"
-                    aria-label="{{ __('site.nav.change_language') }}"
-                    aria-haspopup="dialog"
-                    :aria-expanded="langOpen.toString()"
-                    aria-controls="language-sheet"
-                    @click="langOpen ? (langOpen = false) : openLangSheet()"
-                >
-                    <img
-                        src="{{ asset('images/svg/world.svg') }}"
-                        alt=""
-                        class="size-6"
-                        width="24"
-                        height="24"
-                        aria-hidden="true"
-                    >
-                </button>
-
-                <button
-                    type="button"
-                    class="inline-flex size-8 items-center justify-center text-black-900 transition-opacity hover:opacity-70"
-                    :aria-label="menuOpen ? '{{ __('site.nav.close_menu') }}' : '{{ __('site.nav.open_menu') }}'"
-                    :aria-expanded="menuOpen.toString()"
-                    aria-controls="site-nav-menu"
-                    @click="menuOpen = !menuOpen"
-                >
-                    <svg x-show="!menuOpen" class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <svg x-show="menuOpen" x-cloak class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </div>
+            <button
+                type="button"
+                class="inline-flex size-10 items-center justify-center justify-self-end text-black-900 transition-opacity hover:opacity-70"
+                :aria-label="menuOpen ? '{{ __('site.nav.close_menu') }}' : '{{ __('site.nav.open_menu') }}'"
+                :aria-expanded="menuOpen.toString()"
+                aria-controls="site-nav-menu"
+                @click="menuOpen = !menuOpen"
+            >
+                <svg x-show="!menuOpen" class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <svg x-show="menuOpen" x-cloak class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
 
         {{-- Desktop: logo · navegación · idioma + contacto --}}
