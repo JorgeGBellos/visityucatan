@@ -87,6 +87,7 @@
     ];
 
     $heroTitle = $homeCms->text('hero.title', 'site.home.hero_title');
+    $heroText = $homeCms->text('hero.text', 'site.home.hero_text');
 
     $aboutText = $homeCms->text('about.text', 'site.home.about_text');
     $aboutText2 = $homeCms->text('about.text_2', 'site.home.about_text_2');
@@ -211,6 +212,10 @@
 
                         {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
                         <h1 id="home-hero-title" class="m-0 whitespace-pre-line text-h2 uppercase text-beige-100">{{ trim($heroTitle) }}</h1>
+
+                        <p class="m-0 max-w-3xl text-s3 text-beige-100">
+                            {{ $heroText }}
+                        </p>
                     </div>
                 </div>
             </section>

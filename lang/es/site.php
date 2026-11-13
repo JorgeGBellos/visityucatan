@@ -671,7 +671,7 @@ return [
     ],
 
     'home' => [
-        'hero_title' => "Yucatán,\nes encuentro",
+        'hero_title' => "Yucatán,\nEl mejor destino para tu próximo evento",
         'hero_text' => 'Infraestructura de clase mundial, conectividad y un equipo experto para hacer de tu evento un éxito.',
         'hero_cta' => 'Planea tu evento',
 

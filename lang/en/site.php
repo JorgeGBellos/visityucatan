@@ -671,7 +671,7 @@ return [
     ],
 
     'home' => [
-        'hero_title' => "Yucatán\nis connection",
+        'hero_title' => "Yucatán,\nThe best destination for your next event",
         'hero_text' => 'World-class infrastructure, connectivity, and an expert team to make your event a success.',
         'hero_cta' => 'Plan your event',
 

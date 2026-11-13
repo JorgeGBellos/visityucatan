@@ -43,6 +43,9 @@ class ManageHomePage extends ManagePageContent
                         ->label('Título')
                         ->rows(2)
                         ->helperText('Puedes usar saltos de línea.'),
+                    Textarea::make("content.{$locale}.hero.text")
+                        ->label('Texto')
+                        ->rows(2),
                 ]),
 
             Section::make('Destino')
@@ -157,6 +160,7 @@ class ManageHomePage extends ManagePageContent
         return [
             'hero' => [
                 'title' => __('site.home.hero_title', [], $locale),
+                'text' => __('site.home.hero_text', [], $locale),
             ],
             'destino' => [
                 'title' => __('site.home.destino_stats_title', [], $locale),
