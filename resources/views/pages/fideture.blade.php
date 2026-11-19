@@ -9,8 +9,6 @@
 
         $heroTitle = $fidetureCms->text('hero.title', 'site.fideture_page.hero_title');
         $heroText = $fidetureCms->text('hero.text', 'site.fideture_page.hero_text');
-        $heroCta = $fidetureCms->text('hero.cta', 'site.fideture_page.hero_cta');
-        $heroCtaUrl = $fidetureCms->text('hero.cta_url', 'site.fideture_page.about_cta_url');
         $backgroundImage = $fidetureCms->image('hero.image', 'images/home/Frame 106.png');
     @endphp
 
@@ -46,18 +44,6 @@
                         {{ $heroText }}
                     </p>
                 </div>
-
-                <a
-                    href="{{ $heroCtaUrl }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-sm mt-8 inline-flex w-full max-w-xs items-center justify-center gap-2 border-beige-100 bg-beige-100 text-[#811C3F] hover:border-black-900 hover:bg-black-900 hover:text-beige-100 sm:w-auto sm:max-w-none"
-                >
-                    <span>{{ $heroCta }}</span>
-                    <svg class="btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
             </div>
 
             <img

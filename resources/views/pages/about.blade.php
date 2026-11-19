@@ -105,21 +105,6 @@
 
                 {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
                 <h1 id="about-hero-title" class="m-0 whitespace-pre-line text-h2 uppercase text-beige-100">{{ trim($heroTitle) }}</h1>
-
-                <ul
-                    class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-5"
-                    aria-label="{{ __('site.about_page.recognitions_label') }}"
-                >
-                    @foreach ($recognitionLogos as $logo)
-                        <li class="flex size-14 items-center justify-center sm:size-16 lg:size-[72px]">
-                            <img
-                                src="{{ asset($logo) }}"
-                                alt=""
-                                class="max-h-full max-w-full object-contain"
-                            >
-                        </li>
-                    @endforeach
-                </ul>
             </div>
         </section>
 
@@ -157,6 +142,21 @@
                         <p class="mt-4 max-w-sm text-b2 font-book text-black-900">
                             {{ $visitText2 }}
                         </p>
+
+                        <ul
+                            class="mt-8 grid w-full max-w-sm grid-cols-3 items-center justify-items-center gap-x-4 gap-y-5 sm:mt-10 sm:gap-x-5 sm:gap-y-6 lg:gap-x-6 lg:gap-y-7"
+                            aria-label="{{ __('site.about_page.recognitions_label') }}"
+                        >
+                            @foreach ($recognitionLogos as $logo)
+                                <li class="flex size-16 items-center justify-center sm:size-20 lg:size-[88px]">
+                                    <img
+                                        src="{{ asset($logo) }}"
+                                        alt=""
+                                        class="max-h-full max-w-full object-contain"
+                                    >
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
 
                     <div class="hidden justify-self-end lg:block" aria-hidden="true">

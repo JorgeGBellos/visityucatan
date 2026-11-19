@@ -6,6 +6,50 @@ Alpine.data('siteCarousel', () => ({
     moved: false,
     startX: 0,
     scrollStart: 0,
+    autoTimer: null,
+    autoDelay: 4800,
+
+    init() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        this.startAuto();
+        this.$cleanup = () => this.clearAuto();
+    },
+
+    destroy() {
+        this.$cleanup?.();
+    },
+
+    clearAuto() {
+        if (this.autoTimer) {
+            clearInterval(this.autoTimer);
+            this.autoTimer = null;
+        }
+    },
+
+    startAuto() {
+        this.clearAuto();
+        this.autoTimer = setInterval(() => this.autoSlide(), this.autoDelay);
+    },
+
+    autoSlide() {
+        const track = this.$refs.track;
+        if (! track) return;
+
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (maxScroll <= 4) {
+            return;
+        }
+
+        if (track.scrollLeft >= maxScroll - 8) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+            return;
+        }
+
+        this.slide(1);
+    },
 
     slide(dir) {
         const track = this.$refs.track;

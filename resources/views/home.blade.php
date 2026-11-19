@@ -155,7 +155,6 @@
 
     $fidetureTitle = $homeCms->text('fideture.title', 'site.home.fideture_title');
     $fidetureText = $homeCms->text('fideture.text', 'site.home.fideture_text');
-    $fidetureCta = $homeCms->text('fideture.cta', 'site.home.fideture_cta');
 
     if ($homeCms->enabled()) {
         $cmsServicios = $homeCms->list('servicios.items');
@@ -541,8 +540,6 @@
         @include('partials.fideture-block', [
             'title' => $fidetureTitle,
             'text' => $fidetureText,
-            'cta' => $fidetureCta,
-            'ctaHref' => route('pages.fideture'),
             'sectionClass' => 'pt-16 pb-8 lg:pt-24 lg:pb-12',
             'backgroundImage' => 'images/home/Frame 106.png',
             'useRichText' => true,

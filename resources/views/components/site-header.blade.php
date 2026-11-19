@@ -149,7 +149,7 @@
                 >
             </a>
 
-            <nav class="flex h-full min-w-0 flex-1 items-center justify-center gap-3 2xl:gap-6" aria-label="{{ __('site.nav.primary') }}">
+            <nav class="flex h-full min-w-0 flex-1 items-center justify-center gap-5 2xl:gap-8" aria-label="{{ __('site.nav.primary') }}">
                 <a href="{{ route('pages.why') }}" class="whitespace-nowrap text-btn3 font-book uppercase tracking-[0.04em] text-black-900 transition-colors hover:text-green-700" @click="close()">
                     {{ __('site.nav.why') }}
                 </a>
@@ -312,10 +312,10 @@
                 class="flex flex-1 flex-col items-center justify-center overflow-y-auto px-6 py-10"
                 aria-label="{{ __('site.nav.primary') }}"
             >
-                <ul class="flex flex-col items-center gap-6 text-center">
+                <ul class="flex flex-col items-center gap-8 text-center">
                     <li>
                         <a href="{{ route('pages.why') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.mobile_why') }}
+                            {{ __('site.nav.why') }}
                         </a>
                     </li>
                     <li>
@@ -324,28 +324,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages.events') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.events') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('pages.allies') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.mobile_specialists') }}
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('pages.apoyos') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.mobile_supports') }}
+                            {{ __('site.nav.organize_event') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('pages.about') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.about') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('pages.fideture') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.fideture') }}
+                            {{ __('site.nav.meet_us') }}
                         </a>
                     </li>
                     <li>
@@ -357,8 +342,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages.blog') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.blog') }}
+                        <a href="{{ route('pages.plan') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
+                            {{ __('site.nav.contact_us') }}
                         </a>
                     </li>
                 </ul>

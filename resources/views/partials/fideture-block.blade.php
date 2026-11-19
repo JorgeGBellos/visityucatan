@@ -2,8 +2,6 @@
     $titleId = $titleId ?? 'fideture-title';
     $title = $title ?? __('site.home.fideture_title');
     $text = $text ?? __('site.home.fideture_text');
-    $cta = $cta ?? __('site.home.fideture_cta');
-    $ctaHref = $ctaHref ?? route('pages.fideture');
     $sectionClass = $sectionClass ?? 'pb-16 lg:pb-24';
     $backgroundImage = $backgroundImage ?? 'images/home/Frame 106.png';
     $showGovernmentLockup = $showGovernmentLockup ?? true;
@@ -51,16 +49,6 @@
                         @endif
                     </p>
                 </div>
-
-                <a
-                    href="{{ $ctaHref }}"
-                    class="btn btn-sm mt-6 inline-flex w-full max-w-xs items-center justify-center gap-2 border-beige-100 bg-beige-100 text-[#811C3F] hover:border-black-900 hover:bg-black-900 hover:text-beige-100 sm:w-auto sm:max-w-none md:mt-8"
-                >
-                    <span>{{ $cta }}</span>
-                    <svg class="btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
             </div>
         </div>
     </div>
