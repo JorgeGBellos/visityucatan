@@ -198,8 +198,7 @@
                 <div
                     class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16"
                 >
-                    {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
-                    <h1 id="home-hero-title" class="m-0 max-w-xl whitespace-pre-line text-h4 uppercase text-beige-100 md:max-w-3xl md:text-h2">{{ trim($heroTitle) }}</h1>
+                    <h1 id="home-hero-title" class="m-0 text-h4 uppercase text-beige-100 md:text-h2">{!! nl2br(e(trim($heroTitle)), false) !!}</h1>
                 </div>
             </section>
 
