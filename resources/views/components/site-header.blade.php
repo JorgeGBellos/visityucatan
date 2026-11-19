@@ -258,7 +258,7 @@
                         x-show="langDropdown"
                         x-cloak
                         x-transition.opacity.duration.150ms
-                        class="absolute top-[calc(100%+12px)] left-1/2 z-40 flex min-w-[11rem] -translate-x-1/2 flex-col gap-3 bg-transparent p-0"
+                        class="absolute top-full left-1/2 z-40 flex min-w-[11rem] -translate-x-1/2 flex-col gap-3 rounded-b-lg border-x-2 border-b-2 border-black-900 bg-beige-500 px-5 py-4"
                         role="menu"
                         aria-label="{{ __('site.nav.language') }}"
                     >

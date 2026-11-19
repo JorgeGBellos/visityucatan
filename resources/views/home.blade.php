@@ -87,7 +87,6 @@
     ];
 
     $heroTitle = $homeCms->text('hero.title', 'site.home.hero_title');
-    $heroText = $homeCms->text('hero.text', 'site.home.hero_text');
 
     $aboutText = $homeCms->text('about.text', 'site.home.about_text');
     $aboutText2 = $homeCms->text('about.text_2', 'site.home.about_text_2');
@@ -199,23 +198,8 @@
                 <div
                     class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16"
                 >
-                    <div class="flex flex-col items-center gap-[30px]">
-                        <img
-                            src="{{ asset('images/svg/footerhero.svg') }}"
-                            alt=""
-                            class="block h-auto w-16 md:w-20"
-                            width="80"
-                            height="50"
-                            aria-hidden="true"
-                        >
-
-                        {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
-                        <h1 id="home-hero-title" class="m-0 max-w-xl whitespace-pre-line text-h4 uppercase text-beige-100 md:max-w-3xl md:text-h2">{{ trim($heroTitle) }}</h1>
-
-                        <p class="m-0 max-w-xl text-s3 text-beige-100 md:max-w-3xl">
-                            {{ $heroText }}
-                        </p>
-                    </div>
+                    {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
+                    <h1 id="home-hero-title" class="m-0 max-w-xl whitespace-pre-line text-h4 uppercase text-beige-100 md:max-w-3xl md:text-h2">{{ trim($heroTitle) }}</h1>
                 </div>
             </section>
 

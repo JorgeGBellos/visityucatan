@@ -57,50 +57,89 @@
 
                 <ul class="mt-10 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
                     @foreach ($distritos as $distrito)
-                        <li class="group relative aspect-[4/3] overflow-hidden rounded-lg">
-                            <img
-                                src="{{ asset($distrito['image']) }}"
-                                alt="{{ $distrito['title'] }}"
-                                class="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-within:scale-105"
-                            >
+                        <li>
+                            {{-- Móvil: mismo card claro del home (título + icono, texto, foto, CTA) --}}
+                            <article class="flex flex-col rounded-lg bg-beige-500 p-5 text-black-900 sm:p-6 lg:hidden">
+                                <div class="flex items-start justify-between gap-4">
+                                    <h2 class="text-s1">
+                                        {{ $distrito['title'] }}
+                                    </h2>
 
-                            <div
-                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black-900/80 via-black-900/35 to-transparent transition-opacity duration-500 ease-out max-lg:opacity-0 lg:opacity-100 lg:group-hover:opacity-0 lg:group-focus-within:opacity-0"
-                                aria-hidden="true"
-                            ></div>
+                                    <img
+                                        src="{{ asset($distrito['icon']) }}"
+                                        alt=""
+                                        class="mt-1 h-9 w-auto shrink-0 brightness-0 sm:h-10"
+                                        height="40"
+                                        aria-hidden="true"
+                                    >
+                                </div>
 
-                            <div
-                                class="pointer-events-none absolute inset-0 bg-black-900/55 transition-opacity duration-500 ease-out max-lg:opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
-                                aria-hidden="true"
-                            ></div>
+                                <p class="mt-3 text-b2 font-book text-black-700">
+                                    {{ $distrito['description'] }}
+                                </p>
 
-                            <div class="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center px-6 pb-6 pt-16 text-center sm:pb-8">
                                 <img
-                                    src="{{ asset($distrito['icon']) }}"
-                                    alt=""
-                                    class="h-10 w-auto shrink-0"
-                                    height="40"
-                                    aria-hidden="true"
+                                    src="{{ asset($distrito['image']) }}"
+                                    alt="{{ $distrito['title'] }}"
+                                    class="mt-5 aspect-[11/12] w-full object-cover"
                                 >
 
-                                <h2 class="mt-3 text-s1 text-beige-100 sm:mt-4">
-                                    {{ $distrito['title'] }}
-                                </h2>
+                                <x-button
+                                    variant="primary"
+                                    size="sm"
+                                    href="{{ $distrito['href'] }}"
+                                    class="mt-5 w-full justify-center"
+                                >
+                                    {{ __('site.common.explore_district') }}
+                                </x-button>
+                            </article>
 
-                                <div class="grid w-full max-w-md grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
-                                    <div class="min-h-0 overflow-hidden">
-                                        <p class="mt-3 text-b2 font-book text-beige-100/95 transition-opacity duration-500 ease-out delay-100 max-lg:opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100">
-                                            {{ $distrito['description'] }}
-                                        </p>
+                            {{-- Desktop: overlay original sin cambios --}}
+                            <article class="group relative hidden aspect-[4/3] overflow-hidden rounded-lg lg:block">
+                                <img
+                                    src="{{ asset($distrito['image']) }}"
+                                    alt="{{ $distrito['title'] }}"
+                                    class="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-within:scale-105"
+                                >
+
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black-900/80 via-black-900/35 to-transparent transition-opacity duration-500 ease-out group-hover:opacity-0 group-focus-within:opacity-0"
+                                    aria-hidden="true"
+                                ></div>
+
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-black-900/55 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-within:opacity-100"
+                                    aria-hidden="true"
+                                ></div>
+
+                                <div class="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center px-6 pb-8 pt-16 text-center">
+                                    <img
+                                        src="{{ asset($distrito['icon']) }}"
+                                        alt=""
+                                        class="h-10 w-auto shrink-0"
+                                        height="40"
+                                        aria-hidden="true"
+                                    >
+
+                                    <h2 class="mt-4 text-s1 text-beige-100">
+                                        {{ $distrito['title'] }}
+                                    </h2>
+
+                                    <div class="grid w-full max-w-md grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                                        <div class="min-h-0 overflow-hidden">
+                                            <p class="mt-3 text-b2 font-book text-beige-100/95 opacity-0 transition-opacity duration-500 ease-out delay-100 group-hover:opacity-100 group-focus-within:opacity-100">
+                                                {{ $distrito['description'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5">
+                                        <x-button variant="secondary" size="sm" href="{{ $distrito['href'] }}">
+                                            {{ __('site.common.explore_district') }}
+                                        </x-button>
                                     </div>
                                 </div>
-
-                                <div class="mt-4 sm:mt-5">
-                                    <x-button variant="secondary" size="sm" href="{{ $distrito['href'] }}">
-                                        {{ __('site.common.explore_district') }}
-                                    </x-button>
-                                </div>
-                            </div>
+                            </article>
                         </li>
                     @endforeach
                 </ul>
