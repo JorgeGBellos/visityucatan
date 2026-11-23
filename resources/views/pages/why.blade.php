@@ -57,69 +57,67 @@
             ['src' => 'images/pqyucatan/airlines/magni.png', 'alt' => 'Magni Charters'],
         ];
 
-        $venues = collect(__('site.why_page.venues'))
-            ->values()
-            ->map(function (array $item, int $index) {
-                return [
-                    ...$item,
-                    'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + ($index % 6)).').png',
-                    'icon' => 'images/svg/casita.svg',
-                ];
-            })
-            ->all();
+        $placeIcon = 'images/iconos/venues.png';
 
-        $haciendas = collect(__('site.why_page.haciendas'))
-            ->values()
-            ->map(function (array $item, int $index) {
-                return [
-                    ...$item,
-                    'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + (($index + 2) % 6)).').png',
-                    'icon' => 'images/svg/casita.svg',
-                ];
-            })
-            ->all();
+        $mapDistrictPlaces = function ($query, int $fallbackOffset = 0) use ($placeIcon) {
+            return $query
+                ->get()
+                ->unique(fn ($place) => mb_strtolower(trim($place->title_es ?: $place->title_en ?: (string) $place->id)))
+                ->values()
+                ->map(function ($place, int $index) use ($placeIcon, $fallbackOffset) {
+                    return [
+                        'name' => $place->title(),
+                        'image' => $place->image ?: 'images/why-yucatan/grid/Image Placeholder ('.(11 + (($index + $fallbackOffset) % 6)).').png',
+                        'icon' => $placeIcon,
+                    ];
+                })
+                ->filter(fn (array $item) => filled($item['name']))
+                ->values()
+                ->all();
+        };
 
-        if ($whyCms->enabled()) {
-            $cmsVenues = $whyCms->list('venues.items');
-            if ($cmsVenues !== []) {
-                $venues = collect($cmsVenues)
-                    ->values()
-                    ->map(function (array $item, int $index) {
-                        return [
-                            'name' => $item['name'] ?? '',
-                            'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + ($index % 6)).').png',
-                            'icon' => 'images/svg/casita.svg',
-                        ];
-                    })
-                    ->filter(fn (array $item) => filled($item['name']))
-                    ->values()
-                    ->all();
-            }
+        $haciendas = $mapDistrictPlaces(
+            \App\Models\DistrictPlace::query()->published()->where('type', 'hacienda')->ordered(),
+            2,
+        );
 
-            $cmsHaciendas = $whyCms->list('haciendas.items');
-            if ($cmsHaciendas !== []) {
-                $haciendas = collect($cmsHaciendas)
-                    ->values()
-                    ->map(function (array $item, int $index) {
-                        return [
-                            'name' => $item['name'] ?? '',
-                            'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + (($index + 2) % 6)).').png',
-                            'icon' => 'images/svg/casita.svg',
-                        ];
-                    })
-                    ->filter(fn (array $item) => filled($item['name']))
-                    ->values()
-                    ->all();
-            }
+        $venues = $mapDistrictPlaces(
+            \App\Models\DistrictPlace::query()->published()->where('category', 'venues')->ordered(),
+        );
+
+        if ($haciendas === []) {
+            $haciendas = collect(__('site.why_page.haciendas'))
+                ->values()
+                ->map(function (array $item, int $index) use ($placeIcon) {
+                    return [
+                        ...$item,
+                        'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + (($index + 2) % 6)).').png',
+                        'icon' => $placeIcon,
+                    ];
+                })
+                ->all();
+        }
+
+        if ($venues === []) {
+            $venues = collect(__('site.why_page.venues'))
+                ->values()
+                ->map(function (array $item, int $index) use ($placeIcon) {
+                    return [
+                        ...$item,
+                        'image' => $item['image'] ?? 'images/why-yucatan/grid/Image Placeholder ('.(11 + ($index % 6)).').png',
+                        'icon' => $placeIcon,
+                    ];
+                })
+                ->all();
         }
 
         $attractionIcons = [
-            'images/iconos/Nuevos iconos (1).svg',
-            'images/iconos/Nuevos iconos.svg',
-            'images/iconos/Nuevos iconos (3).svg',
-            'images/iconos/Nuevos iconos (4).svg',
-            'images/iconos/Nuevos iconos (5).svg',
-            'images/iconos/Nuevos iconos (6).svg',
+            'images/iconos/ciudades/izamal.png',
+            'images/iconos/ciudades/valladolid.png',
+            'images/iconos/ciudades/mani.png',
+            'images/iconos/ciudades/sisal.png',
+            'images/iconos/ciudades/motul.png',
+            'images/iconos/ciudades/tekax.png',
         ];
 
         $attractions = collect(__('site.why_page.attractions'))

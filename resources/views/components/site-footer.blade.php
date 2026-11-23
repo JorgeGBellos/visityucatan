@@ -8,39 +8,14 @@
 ])
 
 @php
-    $navPrimary = [
+    $navLinks = [
         ['label' => __('site.nav.why'), 'href' => route('pages.why')],
-        ['label' => __('site.footer.district_norte'), 'href' => route('pages.distrito', 'siglo-xxi')],
-        ['label' => __('site.footer.district_centro'), 'href' => route('pages.distrito', 'cic')],
+        ['label' => __('site.nav.districts'), 'href' => route('pages.districts')],
         ['label' => __('site.nav.plan_event'), 'href' => route('pages.plan')],
-    ];
-
-    $navSecondary = [
         ['label' => __('site.nav.about'), 'href' => route('pages.about')],
-        ['label' => __('site.footer.supports'), 'href' => route('pages.apoyos')],
-        ['label' => __('site.nav.events'), 'href' => route('pages.events')],
-        ['label' => __('site.footer.specialists'), 'href' => route('pages.allies')],
-    ];
-
-    $navExternal = [
-        [
-            'label' => __('site.footer.fideture'),
-            'href' => __('site.fideture_page.about_cta_url'),
-            'external' => true,
-        ],
         [
             'label' => __('site.footer.yucatan_tourism'),
             'href' => 'https://www.yucatan.travel/',
-            'external' => true,
-        ],
-        [
-            'label' => __('site.footer.cic'),
-            'href' => __('site.distrito_cic.cta_url'),
-            'external' => true,
-        ],
-        [
-            'label' => __('site.footer.siglo_xxi'),
-            'href' => __('site.distrito_siglo_xxi.cta_url'),
             'external' => true,
         ],
     ];
@@ -127,7 +102,7 @@
                 </a>
 
                 <nav class="flex flex-col items-center gap-4" aria-label="{{ __('site.footer.aria_label') }}">
-                    @foreach (array_merge($navPrimary, $navSecondary, $navExternal) as $item)
+                    @foreach ($navLinks as $item)
                         <a
                             href="{{ $item['href'] }}"
                             class="inline-flex items-center gap-1 text-b2 font-bold text-black-900 transition-opacity hover:opacity-70"
@@ -214,37 +189,16 @@
 
                 <div class="flex min-w-0 flex-1 items-start justify-between gap-x-6 px-4 xl:gap-x-8 xl:px-8">
                     <nav class="shrink-0 space-y-3" aria-label="{{ __('site.footer.aria_label') }}">
-                        @foreach ($navPrimary as $item)
-                            <a
-                                href="{{ $item['href'] }}"
-                                class="block text-b2 font-bold text-black-900 transition-opacity hover:opacity-70"
-                            >
-                                {{ $item['label'] }}
-                            </a>
-                        @endforeach
-                    </nav>
-
-                    <nav class="shrink-0 space-y-3" aria-label="{{ __('site.footer.aria_label') }}">
-                        @foreach ($navSecondary as $item)
-                            <a
-                                href="{{ $item['href'] }}"
-                                class="block text-b2 font-bold text-black-900 transition-opacity hover:opacity-70"
-                            >
-                                {{ $item['label'] }}
-                            </a>
-                        @endforeach
-                    </nav>
-
-                    <nav class="shrink-0 space-y-3" aria-label="{{ __('site.footer.aria_label') }}">
-                        @foreach ($navExternal as $item)
+                        @foreach ($navLinks as $item)
                             <a
                                 href="{{ $item['href'] }}"
                                 class="flex w-fit items-center gap-1 text-b2 font-bold text-black-900 transition-opacity hover:opacity-70"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                @if (! empty($item['external']) && $item['href'] !== '#') target="_blank" rel="noopener noreferrer" @endif
                             >
                                 <span>{{ $item['label'] }}</span>
-                                {!! $externalIcon !!}
+                                @if (! empty($item['external']))
+                                    {!! $externalIcon !!}
+                                @endif
                             </a>
                         @endforeach
                     </nav>

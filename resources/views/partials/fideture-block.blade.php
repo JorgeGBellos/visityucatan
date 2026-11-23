@@ -3,21 +3,13 @@
     $title = $title ?? __('site.home.fideture_title');
     $text = $text ?? __('site.home.fideture_text');
     $sectionClass = $sectionClass ?? 'pb-16 lg:pb-24';
-    $backgroundImage = $backgroundImage ?? 'images/home/Frame 106.png';
     $showGovernmentLockup = $showGovernmentLockup ?? true;
     $useRichText = $useRichText ?? false;
 @endphp
 
 <section class="bg-beige-500 {{ $sectionClass }}" aria-labelledby="{{ $titleId }}">
     <div class="mx-auto max-w-site md:px-6 lg:px-10">
-        <div class="relative flex min-h-0 flex-col overflow-hidden rounded-none border-0 border-beige-100 md:rounded-lg md:border-2">
-            <img
-                src="{{ asset($backgroundImage) }}"
-                alt=""
-                class="absolute inset-0 h-full w-full object-cover"
-                aria-hidden="true"
-            >
-
+        <div class="relative flex min-h-0 flex-col overflow-hidden rounded-none border-0 border-beige-100 bg-[#811C3F] md:rounded-lg md:border-2">
             <div class="relative z-10 flex flex-col items-center px-6 py-16 text-center text-beige-100 sm:px-10 md:min-h-[640px] md:justify-center md:py-14">
                 @if ($showGovernmentLockup)
                     <img

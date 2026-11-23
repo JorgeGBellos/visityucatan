@@ -196,9 +196,9 @@
                 <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
 
                 <div
-                    class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16"
+                    class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-16 pt-24 text-center max-md:pb-20 md:pb-12 lg:px-10 lg:pb-16"
                 >
-                    <h1 id="home-hero-title" class="m-0 text-h4 uppercase text-beige-100 md:text-h2">{!! nl2br(e(trim($heroTitle)), false) !!}</h1>
+                    <h1 id="home-hero-title" class="m-0 text-s2 uppercase leading-[1.2] text-beige-100 md:text-h2 md:leading-[1.2]">{!! nl2br(e(trim($heroTitle)), false) !!}</h1>
                 </div>
             </section>
 
@@ -524,7 +524,6 @@
             'title' => $fidetureTitle,
             'text' => $fidetureText,
             'sectionClass' => 'pt-16 pb-8 lg:pt-24 lg:pb-12',
-            'backgroundImage' => 'images/home/Frame 106.png',
             'useRichText' => true,
         ])
 

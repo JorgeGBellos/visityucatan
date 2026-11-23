@@ -9,21 +9,12 @@
 
         $heroTitle = $fidetureCms->text('hero.title', 'site.fideture_page.hero_title');
         $heroText = $fidetureCms->text('hero.text', 'site.fideture_page.hero_text');
-        $backgroundImage = $fidetureCms->image('hero.image', 'images/home/Frame 106.png');
     @endphp
 
     <main
-        class="relative flex min-h-[calc(100svh-90px)] flex-col overflow-hidden bg-black-900"
+        class="relative flex min-h-[calc(100svh-90px)] flex-col overflow-hidden bg-[#811C3F]"
         aria-labelledby="fideture-page-title"
     >
-        <img
-            src="{{ cms_asset($backgroundImage) }}"
-            alt=""
-            class="absolute inset-0 h-full w-full object-cover"
-            aria-hidden="true"
-        >
-
-        <div class="absolute inset-0 bg-[#811C3F]/55" aria-hidden="true"></div>
 
         <div class="relative z-10 mx-auto flex w-full max-w-site flex-1 flex-col items-center justify-between px-6 py-12 text-center text-beige-100 lg:px-10 lg:py-16">
             <div class="flex w-full flex-1 flex-col items-center justify-center">
