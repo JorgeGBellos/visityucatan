@@ -459,14 +459,6 @@
                                 {{ $culturaCta }}
                             </x-button>
                         </div>
-
-                        <img
-                            src="{{ asset('images/home/section6/iconosuperior.svg') }}"
-                            alt=""
-                            class="mt-8 h-12 w-auto lg:mt-10 lg:h-14"
-                            height="56"
-                            aria-hidden="true"
-                        >
                     </div>
                 </div>
             </div>
