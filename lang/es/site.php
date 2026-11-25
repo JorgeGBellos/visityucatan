@@ -34,8 +34,8 @@ return [
         'mobile_specialists' => 'Especialistas',
         'organize_event' => 'Organiza',
         'meet_us' => 'Nosotros',
-        'contact_us' => 'Contacto',
-        'destination_supports' => 'Apoyos al destino',
+        'contact_us' => 'Contáctanos',
+        'destination_supports' => 'Apoyos del destino',
     ],
 
     'common' => [

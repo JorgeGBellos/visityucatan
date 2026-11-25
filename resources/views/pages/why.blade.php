@@ -120,12 +120,22 @@
             'images/iconos/ciudades/tekax.png',
         ];
 
+        // Sisal y Tekax intercambian imagen (placeholders 13 y 11).
+        $attractionImages = [
+            'images/atracciones/Image Placeholder (8).png',
+            'images/atracciones/Image Placeholder (9).png',
+            'images/atracciones/Image Placeholder (10).png',
+            'images/atracciones/Image Placeholder (13).png',
+            'images/atracciones/Image Placeholder (12).png',
+            'images/atracciones/Image Placeholder (11).png',
+        ];
+
         $attractions = collect(__('site.why_page.attractions'))
             ->values()
-            ->map(function (array $item, int $index) use ($attractionIcons) {
+            ->map(function (array $item, int $index) use ($attractionIcons, $attractionImages) {
                 return [
                     ...$item,
-                    'image' => 'images/atracciones/Image Placeholder ('.(8 + $index).').png',
+                    'image' => $attractionImages[$index] ?? $attractionImages[0],
                     'icon' => $attractionIcons[$index] ?? $attractionIcons[0],
                 ];
             })
@@ -136,10 +146,10 @@
             if ($cmsAttractions !== []) {
                 $attractions = collect($cmsAttractions)
                     ->values()
-                    ->map(function (array $item, int $index) use ($attractionIcons) {
+                    ->map(function (array $item, int $index) use ($attractionIcons, $attractionImages) {
                         return [
                             'name' => $item['name'] ?? '',
-                            'image' => 'images/atracciones/Image Placeholder ('.(8 + $index).').png',
+                            'image' => $attractionImages[$index] ?? $attractionImages[0],
                             'icon' => $attractionIcons[$index] ?? $attractionIcons[0],
                         ];
                     })
@@ -171,7 +181,7 @@
 
             <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
 
-            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center gap-[30px] px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16">
+            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center gap-[30px] px-6 pb-12 pt-24 text-center max-md:pb-20 md:pb-12 lg:px-10 lg:pb-16">
                 <img
                     src="{{ asset('images/svg/footerhero.svg') }}"
                     alt=""
@@ -181,7 +191,7 @@
                     aria-hidden="true"
                 >
 
-                <h1 id="why-hero-title" class="m-0 whitespace-pre-line text-h2 uppercase text-beige-100">{{ trim($heroTitle) }}</h1>
+                <h1 id="why-hero-title" class="m-0 text-s2 uppercase leading-[1.2] text-beige-100 md:text-h2 md:leading-[1.2]">{!! nl2br(e(trim($heroTitle)), false) !!}</h1>
             </div>
         </section>
 

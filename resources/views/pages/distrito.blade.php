@@ -101,11 +101,11 @@
 
             <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
 
-            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16">
+            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center px-6 pb-12 pt-24 text-center max-md:pb-20 md:pb-12 lg:px-10 lg:pb-16">
                 <h1
                     id="distrito-banner-title"
-                    class="m-0 max-w-4xl whitespace-pre-line text-h4 uppercase text-beige-100 lg:text-h3"
-                >{{ trim($bannerTitle) }}</h1>
+                    class="m-0 max-w-4xl text-s2 uppercase leading-[1.2] text-beige-100 md:text-h3 md:leading-[1.2]"
+                >{!! nl2br(e(trim($bannerTitle)), false) !!}</h1>
             </div>
         </section>
 

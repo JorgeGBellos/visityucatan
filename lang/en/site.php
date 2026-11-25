@@ -34,7 +34,7 @@ return [
         'mobile_specialists' => 'Specialists',
         'organize_event' => 'Organize',
         'meet_us' => 'About',
-        'contact_us' => 'Contact',
+        'contact_us' => 'Contact us',
         'destination_supports' => 'Destination support',
     ],
 

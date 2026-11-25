@@ -93,7 +93,7 @@
 
             <div class="absolute inset-0 bg-black-900/35" aria-hidden="true"></div>
 
-            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center gap-[30px] px-6 pb-12 pt-24 text-center lg:px-10 lg:pb-16">
+            <div class="relative z-10 mx-auto mt-auto flex w-full max-w-site flex-col items-center gap-[30px] px-6 pb-12 pt-24 text-center max-md:pb-20 md:pb-12 lg:px-10 lg:pb-16">
                 <img
                     src="{{ asset('images/svg/footerhero.svg') }}"
                     alt=""
@@ -103,8 +103,7 @@
                     aria-hidden="true"
                 >
 
-                {{-- Contenido pegado al tag: evita newline inicial con whitespace-pre-line --}}
-                <h1 id="about-hero-title" class="m-0 whitespace-pre-line text-h2 uppercase text-beige-100">{{ trim($heroTitle) }}</h1>
+                <h1 id="about-hero-title" class="m-0 text-s2 uppercase leading-[1.2] text-beige-100 md:text-h2 md:leading-[1.2]">{!! nl2br(e(trim($heroTitle)), false) !!}</h1>
             </div>
         </section>
 

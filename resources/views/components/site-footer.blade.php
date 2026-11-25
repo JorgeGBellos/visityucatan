@@ -89,15 +89,15 @@
             ])
             aria-label="{{ __('site.footer.aria_label') }}"
         >
-            {{-- Móvil --}}
+            {{-- Móvil: Visit arriba; círculo + Fideture al final --}}
             <div class="flex flex-col items-center gap-10 text-center lg:hidden">
                 <a href="{{ route('home') }}" class="shrink-0" aria-label="{{ config('app.name') }}">
                     <img
-                        src="{{ asset('images/footer/yucatan-circle.svg') }}"
+                        src="{{ asset('images/footer/visit-yucatan.svg') }}"
                         alt="{{ config('app.name') }}"
-                        class="h-[120px] w-auto"
-                        width="117"
-                        height="120"
+                        class="h-auto w-[170px]"
+                        width="170"
+                        height="48"
                     >
                 </a>
 
@@ -159,11 +159,11 @@
 
                 <div class="flex w-[170px] flex-col items-center gap-8">
                     <img
-                        src="{{ asset('images/footer/visit-yucatan.svg') }}"
+                        src="{{ asset('images/footer/yucatan-circle.svg') }}"
                         alt="{{ config('app.name') }}"
-                        class="h-auto w-full"
-                        width="170"
-                        height="48"
+                        class="h-[120px] w-auto"
+                        width="117"
+                        height="120"
                     >
                     <img
                         src="{{ asset('images/footer/Fideture.svg') }}"

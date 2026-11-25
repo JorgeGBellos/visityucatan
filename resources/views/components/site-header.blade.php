@@ -309,10 +309,10 @@
             @click.stop
         >
             <nav
-                class="flex flex-1 flex-col items-center justify-center overflow-y-auto px-6 py-10"
+                class="flex flex-1 flex-col overflow-y-auto px-6 pt-10 pb-6"
                 aria-label="{{ __('site.nav.primary') }}"
             >
-                <ul class="flex w-full max-w-sm flex-col items-center gap-6 text-center">
+                <ul class="flex w-full flex-1 flex-col items-center justify-center gap-5 text-center">
                     <li>
                         <a href="{{ route('pages.why') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
                             {{ __('site.nav.why') }}
@@ -323,85 +323,44 @@
                             {{ __('site.nav.districts') }}
                         </a>
                     </li>
-                    <li class="w-full">
-                        <button
-                            type="button"
-                            class="inline-flex items-center gap-2 text-s2 text-black-900 transition-opacity hover:opacity-70"
-                            :class="openMenu === 'organize' && 'text-green-700'"
-                            aria-haspopup="menu"
-                            :aria-expanded="(openMenu === 'organize').toString()"
-                            aria-controls="mobile-organize-submenu"
-                            @click="toggleNav('organize')"
-                        >
-                            <span>{{ __('site.nav.organize_event') }}</span>
-                            <svg class="size-3.5 transition-transform" :class="openMenu === 'organize' && 'rotate-180'" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                                <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                        </button>
-                        <ul
-                            id="mobile-organize-submenu"
-                            x-show="openMenu === 'organize'"
-                            x-cloak
-                            class="mt-4 flex flex-col items-center gap-3"
-                            role="menu"
-                            aria-label="{{ __('site.nav.organize_event') }}"
-                        >
-                            @foreach ($organizeNav as $item)
-                                <li>
-                                    <a href="{{ $item['href'] }}" class="text-b2 font-book text-black-900 transition-opacity hover:opacity-70" role="menuitem" @click="close()">
-                                        {{ $item['label'] }}
+                    @foreach ($organizeNav as $item)
+                        <li>
+                            <a href="{{ $item['href'] }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
+                                {{ $item['label'] }}
                             </a>
                         </li>
                     @endforeach
-                </ul>
-                    </li>
-                    <li class="w-full">
-                        <button
-                            type="button"
-                            class="inline-flex items-center gap-2 text-s2 text-black-900 transition-opacity hover:opacity-70"
-                            :class="openMenu === 'meet' && 'text-green-700'"
-                            aria-haspopup="menu"
-                            :aria-expanded="(openMenu === 'meet').toString()"
-                            aria-controls="mobile-meet-submenu"
-                            @click="toggleNav('meet')"
-                        >
-                            <span>{{ __('site.nav.meet_us') }}</span>
-                            <svg class="size-3.5 transition-transform" :class="openMenu === 'meet' && 'rotate-180'" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                                <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                        </button>
-                        <ul
-                            id="mobile-meet-submenu"
-                            x-show="openMenu === 'meet'"
-                            x-cloak
-                            class="mt-4 flex flex-col items-center gap-3"
-                            role="menu"
-                            aria-label="{{ __('site.nav.meet_us') }}"
-                        >
-                            @foreach ($meetNav as $item)
-                                <li>
-                                    <a href="{{ $item['href'] }}" class="text-b2 font-book text-black-900 transition-opacity hover:opacity-70" role="menuitem" @click="close()">
-                                        {{ $item['label'] }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                    </li>
                     <li>
-                        <a href="{{ $tourismNav['href'] }}" class="inline-flex items-center gap-1.5 text-s2 text-black-900 transition-opacity hover:opacity-70" target="_blank" rel="noopener noreferrer">
-                            <span>{{ $tourismNav['label'] }}</span>
-                                                <svg class="size-3.5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                                    <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
+                        <a href="{{ route('pages.about') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
+                            {{ __('site.nav.about') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages.plan') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
-                            {{ __('site.nav.contact_us') }}
-                                        </a>
-                                    </li>
-                            </ul>
-                        </nav>
+                        <a href="{{ route('pages.blog') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
+                            {{ __('site.nav.blog') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages.fideture') }}" class="text-s2 text-black-900 transition-opacity hover:opacity-70" @click="close()">
+                            {{ __('site.nav.fideture') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ $tourismNav['href'] }}" class="inline-flex items-center gap-1.5 text-s2 text-black-900 transition-opacity hover:opacity-70" target="_blank" rel="noopener noreferrer">
+                            <span>{{ __('site.footer.yucatan_tourism') }}</span>
+                            <svg class="size-3.5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M4 12L12 4M12 4H6.5M12 4V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="mt-8 flex w-full justify-center pb-4">
+                    <x-button variant="primary" size="sm" class="w-full max-w-xs justify-center" href="{{ route('pages.plan') }}" @click="close()">
+                        {{ __('site.nav.contact_us') }}
+                    </x-button>
+                </div>
+            </nav>
         </div>
     </div>
 
