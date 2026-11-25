@@ -101,21 +101,6 @@
                     >
                 </a>
 
-                <nav class="flex flex-col items-center gap-4" aria-label="{{ __('site.footer.aria_label') }}">
-                    @foreach ($navLinks as $item)
-                        <a
-                            href="{{ $item['href'] }}"
-                            class="inline-flex items-center gap-1 text-b2 font-bold text-black-900 transition-opacity hover:opacity-70"
-                            @if (! empty($item['external']) && $item['href'] !== '#') target="_blank" rel="noopener noreferrer" @endif
-                        >
-                            <span>{{ $item['label'] }}</span>
-                            @if (! empty($item['external']))
-                                {!! $externalIcon !!}
-                            @endif
-                        </a>
-                    @endforeach
-                </nav>
-
                 <div class="space-y-2">
                     <p class="text-b2 font-bold">{{ __('site.footer.contact') }}</p>
                     <a href="{{ site_settings()->emailHref() }}" class="block text-b2 font-book transition-opacity hover:opacity-70">
